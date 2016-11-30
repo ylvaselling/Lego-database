@@ -1,26 +1,17 @@
-body
-{
-	margin: 0px;
-}
-
-
-.meny
-{
-	width: 100%;
-	height: 80px;
-	background-color:blue;
-}
-
-.meny td
-{
-	background-color: red;
-	height: 74px;
-	width: 100px;
-	padding: 2;
-	text-align: center;
-}
-
-.middlediv
-{
+.middlediv {
+	height: 100vw;
+	width: 90vw;
+	display: block;
+	margin: 0 auto;
 	background-color: red;
 }
+
+.searchbox
+{
+	height:30px;
+	width: 500px;
+	display:block;
+	margin:auto;
+	
+}
+
