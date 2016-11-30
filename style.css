@@ -54,3 +54,16 @@ body
 #block3 {
 	margin-top: 440px;
 }
+
+.searchbox
+{
+ 	background-color: red;
+ 	height: 74px;
+ 	width: 100px;
+	padding: 2;
+	text-align: center;
+ 	height:30px;
+ 	width: 500px;
+ 	display:block;
+ 	margin:auto;	
+}
