@@ -9,12 +9,6 @@ if (!$connection)
 
 $keyword = $_GET['searchbox'];
 
-/*if($keyword === null)
-{
-	header ("location: http://www.google.se");
-	exit();
-}*/
-
 $result = mysqli_query($connection, "SELECT inventory.SetID, sets.Setname, sets.Year FROM inventory, sets, parts
 									WHERE parts.PartID=inventory.ItemID AND inventory.SetID=sets.SetID AND inventory.Extra='N'
 									AND (Partname LIKE '%$keyword%' OR PartID='$keyword')");
@@ -37,7 +31,5 @@ $result = mysqli_query($connection, "SELECT inventory.SetID, sets.Setname, sets.
 			print("</tr>\n");
 		}
 		mysqli_close($connection);
-
-
 
 ?>
