@@ -13,6 +13,6 @@
 					<td><a href="startpage.html">Home</a></td>
 					<td><a href="about.html">About us</a></td>
 				</tr>
+			</table>
 			</div>
-	
 	
