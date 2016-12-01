@@ -15,9 +15,9 @@ $keyword = $_GET['searchbox'];
 	exit();
 }*/
 
-$result = mysqli_query($connection, "SELECT parts.Partname, parts.PartID, inventory.SetID, sets.Year, sets.Setname FROM
-					inventory, sets, parts WHERE sets.SetID=inventory.SetID AND ItemTypeID='P' AND
-				 Partname LIKE '%$keyword%' ORDER BY sets.Year DESC");
+$result = mysqli_query($connection, "SELECT inventory.SetID, sets.Setname, sets.Year FROM inventory, sets, parts
+									WHERE parts.PartID=inventory.ItemID AND inventory.SetID=sets.SetID AND
+									Partname LIKE '%$keyword%'");
 
 		print("<table>\n<tr>");
 		while($fieldinfo = mysqli_fetch_field($result))
