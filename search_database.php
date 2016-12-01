@@ -11,8 +11,6 @@ $keyword = $_GET['searchbox'];
 
 $bricks = mysqli_query($connection, "SELECT parts.PartID, parts.Partname FROM parts WHERE (Partname LIKE '%$keyword%' OR PartID='$keyword')");
 
-
-
 if(mysqli_num_rows($bricks)==0)
 {
     print("No results");
@@ -21,15 +19,18 @@ if(mysqli_num_rows($bricks)==0)
 else if(mysqli_num_rows($bricks)==1)
 {
 
-	$result = mysqli_query($connection, "SELECT inventory.SetID, sets.Setname, sets.Year FROM inventory, sets, parts
-									WHERE parts.PartID=inventory.ItemID AND inventory.SetID=sets.SetID AND inventory.Extra='N'
-									AND (Partname LIKE '%$keyword%' OR PartID='$keyword')");
+	$result = mysqli_query($connection, "SELECT inventory.SetID, sets.Setname, sets.Year, colors.Colorname FROM
+										inventory, sets, parts, colors
+										WHERE parts.PartID=inventory.ItemID AND inventory.SetID=sets.SetID 
+										AND inventory.Extra='N'
+										AND inventory.ColorID=colors.ColorID AND (Partname LIKE '%$keyword%'
+										OR PartID='$keyword')");
 
 		print("<table>\n<tr>");
 		while($fieldinfo = mysqli_fetch_field($result))
 		{
 			
-			$found=1;
+			
 			print("<th>". $fieldinfo->name . "</th>");
 		}
 		
@@ -42,16 +43,33 @@ else if(mysqli_num_rows($bricks)==1)
 				print("<td>$row[$i]</td>");
 				
 			}
-			print("</tr>\n");
+				/*// Determine the file name for the small 80x60 pixels image, with a preference for JPG format.
+			   $prefix = "http://www.itn.liu.se/~stegu76/img.bricklink.com/";
+			   $ItemID = $row['ItemID'];
+			   // Query the database to see which files, if any, are available
+			   $imagesearch = mysqli_query($connection, "SELECT * FROM images WHERE ItemTypeID='S' AND 
+			   ItemID='$ItemID'");
+			   // By design, the query above should return exactly one row.
+			   $imageinfo = mysqli_fetch_array($imagesearch);
+			   if($imageinfo['has_jpg']) { // Use JPG if it exists
+				 $filename = "S/$ItemID.jpg";
+			   } else if($imageinfo['has_gif']) { // Use GIF if JPG is unavailable
+				 $filename = "S/$ItemID.gif";
+			   } else { // If neither format is available, insert a placeholder image
+				 $filename = "noimage_small.png";
+			   }
+			   print("<td>$filename</td>");
+			   print("<td><img src=\"$prefix$filename\" alt=\"Part $ItemID\"/></td>");
+			   print("</tr>\n");*/
 		}
 }
 
 else
 {
-				print("<table>\n<tr>");
+		print("<table>\n<tr>");
 		while($fieldinfo = mysqli_fetch_field($bricks))
 		{
-			$found=1;
+			
 			print("<th>". $fieldinfo->name . "</th>");
 		}
 		
@@ -64,7 +82,31 @@ else
 				print("<td>$row[$i]</td>");
 				
 			}
-			print("</tr>\n");
+		// Determine the file name for the small 80x60 pixels image, with a preference for JPG format.
+		   $prefix = "http://www.itn.liu.se/~stegu76/img.bricklink.com/";
+		   $ItemID = $row['ItemID'];
+		   $ColorID = $row['ColorID'];
+		   // Query the database to see which files, if any, are available
+		   $imagesearch = mysqli_query($connection, "SELECT * FROM images WHERE ItemTypeID='P' AND ItemID='$ItemID' 
+		   AND ColorID=$ColorID");
+		   // By design, the query above should return exactly one row.
+		   $imageinfo = mysqli_fetch_array($imagesearch);
+		   if($imageinfo['has_jpg']) { // Use JPG if it exists
+			 $filename = "P/$ColorID/$ItemID.jpg";
+		   } else if($imageinfo['has_gif']) { // Use GIF if JPG is unavailable
+			 $filename = "P/$ColorID/$ItemID.gif";
+		   } else { // If neither format is available, insert a placeholder image
+			 $filename = "noimage_small.png";
+		   }
+		   print("<td>$filename</td>");
+		   print("<td><img src=\"$prefix$filename\" alt=\"Part $ItemID\"/></td>");
+		   
+		   /*$Colorname = $row['Colorname'];
+		   $Partname = $row['Partname'];
+		   print("<td>$Colorname</td>");
+		   print("<td>$Partname</td>");*/
+		   print("</tr>\n");
+			
 		}
 
 }
