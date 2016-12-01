@@ -16,8 +16,8 @@ $keyword = $_GET['searchbox'];
 }*/
 
 $result = mysqli_query($connection, "SELECT inventory.SetID, sets.Setname, sets.Year FROM inventory, sets, parts
-									WHERE parts.PartID=inventory.ItemID AND inventory.SetID=sets.SetID AND
-									Partname LIKE '%$keyword%'");
+									WHERE parts.PartID=inventory.ItemID AND inventory.SetID=sets.SetID 
+									AND (Partname LIKE '%$keyword%' OR PartID='$keyword')");
 
 		print("<table>\n<tr>");
 		while($fieldinfo = mysqli_fetch_field($result))
