@@ -13,12 +13,14 @@ $bricks = mysqli_query($connection, "SELECT parts.PartID, parts.Partname FROM pa
 
 
 
-
-
-if(count($bricks)==1)
+if(mysqli_num_rows($bricks)==0)
 {
-	$found=0;
-	
+    print("No results");
+}
+
+else if(mysqli_num_rows($bricks)==1)
+{
+
 	$result = mysqli_query($connection, "SELECT inventory.SetID, sets.Setname, sets.Year FROM inventory, sets, parts
 									WHERE parts.PartID=inventory.ItemID AND inventory.SetID=sets.SetID AND inventory.Extra='N'
 									AND (Partname LIKE '%$keyword%' OR PartID='$keyword')");
@@ -42,19 +44,10 @@ if(count($bricks)==1)
 			}
 			print("</tr>\n");
 		}
-		mysqli_close($connection);
-		
-		if($found=0)
-		{
-			echo "No results found";
-		}
-		
 }
 
 else
 {
-	$found=0;
-	
 				print("<table>\n<tr>");
 		while($fieldinfo = mysqli_fetch_field($bricks))
 		{
@@ -73,12 +66,7 @@ else
 			}
 			print("</tr>\n");
 		}
-		mysqli_close($connection);
-		
-		if($found=0)
-		{
-			echo "No results found";
-		}
 
 }
+		mysqli_close($connection);
 ?>
