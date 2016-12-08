@@ -55,6 +55,7 @@ else if(mysqli_num_rows($bricks)==1)
 			   ItemID='$SetID'");
 			   // By design, the query above should return exactly one row.
 			   $imageinfo = mysqli_fetch_array($imagesearch);
+	
 			   if($imageinfo['has_jpg']) // Use JPG if it exists
 			   { 
 					$filename = "S/$SetID.jpg";
@@ -93,8 +94,11 @@ else
 			$imagesearch = mysqli_query($connection, "SELECT * FROM images WHERE ItemTypeID='P' AND ItemID='$ItemID' AND ColorID='$ColorID'");
 			// By design, the query above should return exactly one row.
 			$imageinfo = mysqli_fetch_array($imagesearch);
-						
+			
+			print ("<form method='GET' action='brick_found.php'>");
+			
 			print("<tr>");
+			
 			for($i=0; $i<mysqli_num_fields($bricks); $i++)
 			{
 				print("<td>$row[$i]</td>");
@@ -113,6 +117,8 @@ else
 				$filename = "noimage_small.png"; // If neither format is available, insert a placeholder image
 			}
 			print("<td><img src=\"$prefix$filename\" alt=\"Part $ItemID\"/></td>");
+			
+			print("<td><input type='submit' name='foundpart' value='$ItemID'></td>");
 
 			print("</tr>\n");	
 		}
