@@ -1,18 +1,19 @@
 <!doctype html>
 
 <html>
-	<head>
+	<head>	
 	<meta charset="utf-8">
 	<link href="style.css" rel="stylesheet" type="text/css"/>
+	<script src="javascript.js"></script>
 	<title>Lego-Search</title>
 	</head>
 		<body>
 			<div class="meny">
 			<table>
 				<tr>
-					<td><a href="startpage.html">Home</a></td>
-					<td><a href="about.html">About us</a></td>
+					<td><a class="headingstart" href="startpage.php">Home</a></td>
+					<td><a class="headingstart" href="about.php">About us</a></td>
 				</tr>
+			</table>
 			</div>
-	
 	
