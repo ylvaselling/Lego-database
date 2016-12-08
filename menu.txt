@@ -11,8 +11,8 @@
 			<div class="meny">
 			<table>
 				<tr>
-					<td><a href="startpage.html">Home</a></td>
-					<td><a href="about.html">About us</a></td>
+					<td><a href="startpage.php">Home</a></td>
+					<td><a href="about.php">About us</a></td>
 				</tr>
 			</table>
 			</div>
