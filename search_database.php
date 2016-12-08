@@ -1,36 +1,23 @@
 <?php 	include "menu.txt";
-		
-echo "<div class='middlediv'>"; 
 
-$connection = mysqli_connect("mysql.itn.liu.se","lego","", "lego");
+	echo "<div class='middlediv'>"; 
+	
+	$found = $_GET['foundpart'];
+	
+	$connection = mysqli_connect("mysql.itn.liu.se","lego","", "lego");
 
-if (!$connection) 
+	if (!$connection) 
 			{
 				die('MySQL connection error');
 			}
 
-$keyword = $_GET['searchbox'];
-
-$bricks = mysqli_query($connection, "SELECT inventory.ItemID, inventory.ColorID, colors.Colorname, parts.Partname 
-FROM inventory, parts, colors WHERE inventory.Extra='N' AND inventory.ItemTypeID='P' 
-AND inventory.ItemID=parts.PartID AND inventory.ColorID=colors.ColorID 
-AND (Partname LIKE '%$keyword%' OR PartID='$keyword') ORDER BY ItemID, ColorID DESC" );
-
-
-if(mysqli_num_rows($bricks)==0)
-{
-    print("No results");
-}
-
-else if(mysqli_num_rows($bricks)==1)
-{
 
 	$result = mysqli_query($connection, "SELECT inventory.SetID, sets.Setname, sets.Year FROM
 										inventory, sets, parts
 										WHERE parts.PartID=inventory.ItemID AND inventory.SetID=sets.SetID 
 										AND inventory.Extra='N'
-										AND (Partname LIKE '%$keyword%'
-										OR PartID='$keyword')");
+										AND (Partname LIKE '$found'
+										OR PartID='$found')");
 
 		print("<table>\n<tr>");
 		while($fieldinfo = mysqli_fetch_field($result))
@@ -77,65 +64,8 @@ else if(mysqli_num_rows($bricks)==1)
 			   print("<td><img src=\"$prefix$filename\" alt=\"Part $SetID\"/></td>");
 			   print("</tr>\n");
 		}
-}
 
-else
-{
-	print('Please specify your search');
-	
-	print("<table>\n<tr>");
-		
-		while($fieldinfo = mysqli_fetch_field($bricks))
-		{
-			print("<th>". $fieldinfo->name . "</th>");
-		}
-	print ("<th>Images</th>");
-	
-	print("</tr>\n");
-		
-		while($row = mysqli_fetch_array($bricks))
-		{
-			print ("<form method='GET' action='brick_click_set.php'>");
-			// Determine the file name for the small 80x60 pixels image, with a preference for JPG format.
-			$prefix = "http://www.itn.liu.se/~stegu76/img.bricklink.com/";
-			$ItemID = $row['ItemID'];
-			$ColorID = $row['ColorID'];
-			// Query the database to see which files, if any, are available
-			$imagesearch = mysqli_query($connection, "SELECT * FROM images WHERE ItemTypeID='P' AND ItemID='$ItemID' AND ColorID='$ColorID'");
-			// By design, the query above should return exactly one row.
-			$imageinfo = mysqli_fetch_array($imagesearch);
-						
-			print("<tr>");
-			
-			for($i=0; $i<mysqli_num_fields($bricks); $i++)
-			{
-				print("<td>$row[$i]</td>");
-			}
-			
-			if($imageinfo['has_jpg']) 
-			{ 
-				$filename = "P/$ColorID/$ItemID.jpg"; // Use JPG if it exists
-			}
-			else if($imageinfo['has_gif']) 
-			{ 
-				$filename = "P/$ColorID/$ItemID.gif"; // Use GIF if JPG is unavailable
-			} 
-			else 
-			{ 
-				$filename = "noimage_small.png"; // If neither format is available, insert a placeholder image
-			}
-			print("<td><img src=\"$prefix$filename\" alt=\"Part $ItemID\"/></td>");
-			
-			
-			print ("<td><input type='radio' name='foundpart' value='$ItemID' ></td>");
-			print ("<td><input type='submit' name='submit' value='$ItemID' ></td>");
 
-			print("</tr>\n");	
-			
-			print ("</form>");
-		}
-
-}
 
 		mysqli_close($connection);
 		
@@ -146,3 +76,4 @@ else
 	</body>
 	</html>
 	
+
