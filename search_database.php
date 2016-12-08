@@ -9,7 +9,10 @@ if (!$connection)
 
 $keyword = $_GET['searchbox'];
 
-$bricks = mysqli_query($connection, "SELECT parts.PartID, parts.Partname FROM parts WHERE (Partname LIKE '%$keyword%' OR PartID='$keyword')");
+$bricks = mysqli_query($connection, "SELECT inventory.ItemID, 
+inventory.ColorID, colors.Colorname, parts.Partname 
+FROM inventory, parts, colors WHERE inventory.Extra='N' AND inventory.ItemTypeID='P' 
+AND inventory.ItemID=parts.PartID AND inventory.ColorID=colors.ColorID AND (Partname LIKE '%$keyword%' OR PartID='$keyword') LIMIT 50");
 
 if(mysqli_num_rows($bricks)==0)
 {
@@ -82,6 +85,7 @@ else
 				print("<td>$row[$i]</td>");
 				
 			}
+			
 		// Determine the file name for the small 80x60 pixels image, with a preference for JPG format.
 		   $prefix = "http://www.itn.liu.se/~stegu76/img.bricklink.com/";
 		   $ItemID = $row['ItemID'];
@@ -100,7 +104,8 @@ else
 		   }
 		   print("<td>$filename</td>");
 		   print("<td><img src=\"$prefix$filename\" alt=\"Part $ItemID\"/></td>");
-		   
+		   print("<td>$ItemID</td>");
+		   print("<td>$ColorID</td>");
 		   /*$Colorname = $row['Colorname'];
 		   $Partname = $row['Partname'];
 		   print("<td>$Colorname</td>");
