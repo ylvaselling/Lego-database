@@ -1,5 +1,6 @@
 <?php
 	error_reporting(E_ALL);
 	ini_set("display_errors",1);
-	include("search_database.php");
+
+	include("brick_click_set.php");
 ?>
