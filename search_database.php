@@ -40,7 +40,10 @@ else if(mysqli_num_rows($bricks)==1)
 			print("<th>". $fieldinfo->name . "</th>");
 		}
 		
+		print ("<th>Images</th>");
+		
 		print("</tr>\n");
+		
 		while($row = mysqli_fetch_array($result))
 		{
 			print("<tr>");
@@ -49,6 +52,7 @@ else if(mysqli_num_rows($bricks)==1)
 				print("<td>$row[$i]</td>");
 				
 			}
+			
 				// Determine the file name for the small 80x60 pixels image, with a preference for JPG format.
 			   $prefix = "http://www.itn.liu.se/~stegu76/img.bricklink.com/";
 			   $SetID = $row['SetID'];
@@ -77,17 +81,21 @@ else if(mysqli_num_rows($bricks)==1)
 
 else
 {
+	print('Please specify your search');
+	
 	print("<table>\n<tr>");
 		
 		while($fieldinfo = mysqli_fetch_field($bricks))
 		{
 			print("<th>". $fieldinfo->name . "</th>");
 		}
+	print ("<th>Images</th>");
 	
 	print("</tr>\n");
 		
 		while($row = mysqli_fetch_array($bricks))
 		{
+			print ("<form method='GET' action='brick_click_set.php'>");
 			// Determine the file name for the small 80x60 pixels image, with a preference for JPG format.
 			$prefix = "http://www.itn.liu.se/~stegu76/img.bricklink.com/";
 			$ItemID = $row['ItemID'];
@@ -98,6 +106,7 @@ else
 			$imageinfo = mysqli_fetch_array($imagesearch);
 						
 			print("<tr>");
+			
 			for($i=0; $i<mysqli_num_fields($bricks); $i++)
 			{
 				print("<td>$row[$i]</td>");
@@ -116,8 +125,14 @@ else
 				$filename = "noimage_small.png"; // If neither format is available, insert a placeholder image
 			}
 			print("<td><img src=\"$prefix$filename\" alt=\"Part $ItemID\"/></td>");
+			
+			
+			print ("<td><input type='radio' name='foundpart' value='$ItemID' ></td>");
+			print ("<td><input type='submit' name='submit' value='$ItemID' ></td>");
 
 			print("</tr>\n");	
+			
+			print ("</form>");
 		}
 
 }
