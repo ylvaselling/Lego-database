@@ -1,7 +1,16 @@
-<?php include "menu.txt"; ?>
+<!doctype html>
 
-		<div class="middlediv">
-			<h1 class="headingstart">Search Legopiece</h1>
+<html>
+	<head>	
+	<meta charset="utf-8">
+	<link href="style.css" rel="stylesheet" type="text/css"/>
+	<script src="javascript.js"></script>
+	<title>Lego-Search</title>
+	</head>
+		<body>
+
+		<div class="startpagebg">
+			<h1 class="headingstart">LEGOSEARCHER</h1>
 		
 				<div class="searchboxdiv">
 					<form name="searchform" action="search_database.php" method="GET" onsubmit="return validateForm()">
