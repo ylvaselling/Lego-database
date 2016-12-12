@@ -14,7 +14,7 @@
 										AND inventory.Extra='N'
 										AND (Partname LIKE '$found'
 										OR PartID='$found')");
-		print("<table>\n<tr>");
+		print("<table class='displaytable'>\n<tr>");
 		while($fieldinfo = mysqli_fetch_field($result))
 		{
 			

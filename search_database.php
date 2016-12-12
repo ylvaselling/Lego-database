@@ -29,7 +29,7 @@ else if(mysqli_num_rows($bricks)==1)
 										AND inventory.Extra='N'
 										AND (Partname LIKE '%$keyword%'
 										OR PartID='$keyword')");
-		print("<table>\n<tr>");
+		print("<table class='displaytable'>\n<tr>");
 		while($fieldinfo = mysqli_fetch_field($result))
 		{
 			
@@ -75,7 +75,7 @@ else if(mysqli_num_rows($bricks)==1)
 
 else
 {
-	print("<table>\n<tr>");
+	print("<table class='displaytable'>\n<tr>");
 		
 		while($fieldinfo = mysqli_fetch_field($bricks))
 		{
@@ -118,7 +118,7 @@ else
 			}
 			print("<td><img src=\"$prefix$filename\" alt=\"Part $ItemID\"/></td>");
 			
-			print("<td><input type='submit' name='foundpart' value='$ItemID'></td>");
+			print("<td><input class='searchbutton' type='submit' name='foundpart' value='$ItemID'></td>");
 
 			print("</tr>\n");	
 		}
