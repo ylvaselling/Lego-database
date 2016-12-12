@@ -3,12 +3,11 @@
 echo "<div class='middlediv'>"; 
 
 $connection = mysqli_connect("mysql.itn.liu.se","lego","", "lego");
-
 if (!$connection) 
 			{
 				die('MySQL connection error');
 			}
-
+			
 $keyword = $_GET['searchbox'];
 
 $bricks = mysqli_query($connection, "SELECT inventory.ItemID, inventory.ColorID, colors.Colorname, parts.Partname 
@@ -24,15 +23,13 @@ if(mysqli_num_rows($bricks)==0)
 
 else if(mysqli_num_rows($bricks)==1)
 {
-
 	$result = mysqli_query($connection, "SELECT inventory.SetID, sets.Setname, sets.Year FROM
 										inventory, sets, parts
 										WHERE parts.PartID=inventory.ItemID AND inventory.SetID=sets.SetID 
 										AND inventory.Extra='N'
 										AND (Partname LIKE '%$keyword%'
 										OR PartID='$keyword')");
-
-		print("<table>\n<tr>");
+		print("<table class='displaytable'>\n<tr>");
 		while($fieldinfo = mysqli_fetch_field($result))
 		{
 			
@@ -78,7 +75,7 @@ else if(mysqli_num_rows($bricks)==1)
 
 else
 {
-	print("<table>\n<tr>");
+	print("<table class='displaytable'>\n<tr>");
 		
 		while($fieldinfo = mysqli_fetch_field($bricks))
 		{
@@ -121,11 +118,10 @@ else
 			}
 			print("<td><img src=\"$prefix$filename\" alt=\"Part $ItemID\"/></td>");
 			
-			print("<td><input type='submit' name='foundpart' value='$ItemID'></td>");
+			print("<td><input class='searchbutton' type='submit' name='foundpart' value='$ItemID'></td>");
 
 			print("</tr>\n");	
 		}
-
 }
 
 		mysqli_close($connection);
@@ -136,6 +132,4 @@ else
 	</div>
 	</body>
 	</html>
-	
-
 	

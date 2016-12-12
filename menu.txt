@@ -1,29 +1,21 @@
 <!doctype html>
 
 <html>
-	<head>
+	
+	<head>	
 	<meta charset="utf-8">
 	<link href="style.css" rel="stylesheet" type="text/css"/>
 	<script src="javascript.js"></script>
 	<title>Lego-Search</title>
 	</head>
+		
 		<body>
 			<div class="meny">
 			<table>
 				<tr>
-					<td><a href="startpage.php">Home</a></td>
-					<td><a href="about.php">About us</a></td>
+					<td><a class="headingstart" href="startpage.php">Home</a></td>
+					<td><a class="headingstart" href="about.php">About us</a></td>
 				</tr>
 			</table>
-			</div>
-			
-			
-			<div class="middlediv">
-			<h1 class="h1startpage">Search legopiece</h1>
-		
-			<form name="searchform" action="search_database.php" method="GET" onsubmit="return validateForm()">
-				<input class="searchbox" type="text" name="searchbox" placeholder="Search in the database...">
-				<input type="submit" value="Search">
-			</form>
 			</div>
 	

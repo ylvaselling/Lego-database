@@ -1,20 +1,25 @@
 <?php 	include "menu.txt";
+
 	echo "<div class='middlediv'>"; 
 	
 	$found = $_GET['foundpart'];
 	
 	$connection = mysqli_connect("mysql.itn.liu.se","lego","", "lego");
+
 	if (!$connection) 
 			{
 				die('MySQL connection error');
 			}
+
+
 	$result = mysqli_query($connection, "SELECT inventory.SetID, sets.Setname, sets.Year FROM
 										inventory, sets, parts
 										WHERE parts.PartID=inventory.ItemID AND inventory.SetID=sets.SetID 
 										AND inventory.Extra='N'
 										AND (Partname LIKE '$found'
 										OR PartID='$found')");
-		print("<table class='displaytable'>\n<tr>");
+
+		print("<table>\n<tr>");
 		while($fieldinfo = mysqli_fetch_field($result))
 		{
 			
@@ -44,7 +49,7 @@
 			   ItemID='$SetID'");
 			   // By design, the query above should return exactly one row.
 			   $imageinfo = mysqli_fetch_array($imagesearch);
-				if($imageinfo['has_jpg']) // Use JPG if it exists
+			   if($imageinfo['has_jpg']) // Use JPG if it exists
 			   { 
 					$filename = "S/$SetID.jpg";
 			   } 
@@ -59,6 +64,9 @@
 			   print("<td><img src=\"$prefix$filename\" alt=\"Part $SetID\"/></td>");
 			   print("</tr>\n");
 		}
+
+
+
 		mysqli_close($connection);
 		
 		
@@ -68,3 +76,4 @@
 	</body>
 	</html>
 	
+
