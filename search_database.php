@@ -12,8 +12,9 @@ if (!$connection)
 $keyword = $_GET['searchbox'];
 
 
-/*Remove LIMIT and forth if query stops working*/
-$bricks = mysqli_query($connection, "SELECT inventory.ItemID, inventory.ColorID, colors.Colorname, parts.Partname 
+
+
+$bricks = mysqli_query($connection, "SELECT DISTINCT inventory.ItemID, inventory.ColorID, colors.Colorname, parts.Partname 
 FROM inventory, parts, colors WHERE inventory.Extra='N' AND inventory.ItemTypeID='P' 
 AND inventory.ItemID=parts.PartID AND inventory.ColorID=colors.ColorID 
 AND (Partname LIKE '%$keyword%' OR PartID='$keyword') ORDER BY ItemID, ColorID DESC");
@@ -28,7 +29,7 @@ if(mysqli_num_rows($bricks)==0)
 
 else if(mysqli_num_rows($bricks)==1)
 {
-	$result = mysqli_query($connection, "SELECT inventory.SetID, sets.Setname, sets.Year FROM
+	$result = mysqli_query($connection, "SELECT DISTINCT inventory.SetID, sets.Setname, sets.Year FROM
 										inventory, sets, parts
 										WHERE parts.PartID=inventory.ItemID AND inventory.SetID=sets.SetID 
 										AND inventory.Extra='N'
@@ -153,7 +154,7 @@ else
 		
 		
 			
-			$bricks = mysqli_query($connection, "SELECT inventory.ItemID, inventory.ColorID, colors.Colorname, parts.Partname 
+			$bricks = mysqli_query($connection, "SELECT DISTINCT inventory.ItemID, inventory.ColorID, colors.Colorname, parts.Partname 
 			FROM inventory, parts, colors WHERE inventory.Extra='N' AND inventory.ItemTypeID='P' 
 			AND inventory.ItemID=parts.PartID AND inventory.ColorID=colors.ColorID 
 			AND (Partname LIKE '%$keyword%' OR PartID='$keyword') ORDER BY ItemID, ColorID DESC 
@@ -202,7 +203,7 @@ else
 			}
 			print("<td><img src=\"$prefix$filename\" alt=\"Part $ItemID\"/></td>");
 			
-			print("<td><input class='searchbutton' type='submit' name='foundpart' value='$ItemID'></td>");
+			print("<td class='last_col'><input id='choosebrick' type='image' src='images/choose_lego.png' name='foundpart' value='$ItemID'></td>");
 
 			print("</tr>\n");	
 		}

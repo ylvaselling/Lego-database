@@ -3,32 +3,38 @@
 body
 {
 	margin: 0px;
+	background-color: #81d2fd;
+	text-align: center;
 }
 
 .meny
 {
-	width: 100%;
+	width: 60vw;
 	height: 80px;
-	background-color:blue;
+	display: block;
+	margin: auto;
+	border: 2px solid #81d2fd;
 	position: static;
 	z-index: 1;
 }
 
 .meny td
 {
-	background-color: yellow;
+	background-color: white;
 	height: 74px;
 	width: 100px;
 	padding: 2;
 	text-align: center;
+
 }
 
 .middlediv
 {
-	background-color: #e6e6e6;
-	width: 90vw;
+	background-color: white;
+	width: 60vw;
 	display: block;
-	margin: 0 auto;
+	margin: auto;
+	margin-top: 10px;
 }
 
 .divleft
@@ -56,45 +62,64 @@ body
 	margin-top: 440px;
 }
 
+#legoman_img
+{
+	width: 150px;
+}
+#startpagetext
+{
+	width: 700px;
+	display: block;
+	margin: auto;
+	text-align: center;
+	margin-top: 40vh;
+}
+
 .searchbox
 {
  	background-color: white;
 	text-align: center;
  	height:30px;
- 	width: 50%;
+ 	width: 85%;
  	display:block;
  	margin:auto;
-	border: 1px solid;
+	border: 0px solid;
 	font-family: 'Exo 2', sans-serif;
 	border-right:none;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	/*border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;*/
+	
 }
 
 /*Placeholder color*/
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-    color:    black;
+    color:    gray;
 }
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-   color:    black;
+   color:    gray;
    opacity:  1;
 }
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
-   color:    black;
+   color:    gray;
    opacity:  1;
 }
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
-   color:    black;
+   color:    gray;
 }
 
 .searchbutton 
 {
 	float: left;
-	background-color: light-gray;
-	border-right: 1px solid;
-	border-top: 1px solid;
-	border-bottom: 1px solid;
+	color: white;
+	background-color: #ff5454;
+	border-right: 0px solid;
+	border-top: 0px solid;
+	border-bottom: 0px solid;
 	border-left: 0px;
 	font-family: 'Exo 2', sans-serif;
-	height: 34px;
+	height: 32px;
 	border-top-right-radius: 5px;
 	border-bottom-right-radius: 5px;
 	cursor: pointer;
@@ -105,22 +130,35 @@ body
 {
 	font-family: 'Exo 2', sans-serif;
 	text-align: center;
-	margin: auto;
+	margin: 0;
+	padding-bottom: 2vh;
+	font-size: 70px;
+	color: white;
+
+
+}
+.menyfont
+{
+	font-family: 'Exo 2', sans-serif;
+	text-align: center;
 }
 
-a:visited
+
+menyfont, a:visited
+
 {
 	text-decoration: none;
 	
 }
 
-a:active
+menyfont, a:active
 {
 	font-size: 90%;
 	text-decoration: none;
 }
 
-a:link
+
+menyfont, a:link
 {
 	color: black;
 	text-decoration: none;
@@ -131,10 +169,25 @@ input
 	float:left;
 }
 
+#searchbox_menu
+{
+	border: 1px solid lightgray;
+	border-right: none;
+}
+
+#legoman_img
+
 .searchboxdiv
 {
+
 	display: block;
-	padding: 5% 0 0 33.1%;
+	padding: 0 0 0 33.1%;
+	margin-top: 20px;
+}
+.startpagebg
+{
+	background-color: #81d2fd;
+	height:100vh;
 }
 
 .displaytable
@@ -147,5 +200,31 @@ input
 
 .displaytable td
 {
-	border: 2px solid grey;
+	border: 2px solid #81d2fd;
+}
+#searchboxmeny
+{
+	width: 80%;
+}
+#searchbuttonmeny
+{
+	height: 34px;
+}
+#starttable td
+{	
+	text-align: center;
+}
+
+#choosebrick
+{
+	background-image: images/choose_lego.png;
+	background-repeat: no-repeat;
+	background-position: left;
+	padding: 0px;
+	width: 150px;
+}
+
+.last_col
+{
+	background-color: #81d2fd;
 }

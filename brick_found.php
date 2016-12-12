@@ -8,7 +8,7 @@
 			{
 				die('MySQL connection error');
 			}
-	$result = mysqli_query($connection, "SELECT inventory.SetID, sets.Setname, sets.Year FROM
+	$result = mysqli_query($connection, "SELECT DISTINCT inventory.SetID, sets.Setname, sets.Year FROM
 										inventory, sets, parts
 										WHERE parts.PartID=inventory.ItemID AND inventory.SetID=sets.SetID 
 										AND inventory.Extra='N'
@@ -44,6 +44,7 @@
 			   ItemID='$SetID'");
 			   // By design, the query above should return exactly one row.
 			   $imageinfo = mysqli_fetch_array($imagesearch);
+				
 				if($imageinfo['has_jpg']) // Use JPG if it exists
 			   { 
 					$filename = "S/$SetID.jpg";
@@ -51,12 +52,12 @@
 			   else if($imageinfo['has_gif']) // Use GIF if JPG is unavailable
 			   { 
 					$filename = "S/$SetID.gif";
-			   } 
+			   }
 			   else // If neither format is available, insert a placeholder image
 			   { 
 					$filename = "noimage_small.png";
 			   }
-			   print("<td><img src=\"$prefix$filename\" alt=\"Part $SetID\"/></td>");
+			   print("<td><img id='myImg' src=\"$prefix$filename\" alt=\"Set $SetID\"  /></td>");
 			   print("</tr>\n");
 		}
 		mysqli_close($connection);

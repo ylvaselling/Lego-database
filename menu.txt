@@ -13,8 +13,16 @@
 			<div class="meny">
 			<table>
 				<tr>
-					<td><a class="headingstart" href="startpage.php">Home</a></td>
-					<td><a class="headingstart" href="about.php">About us</a></td>
+					<td><a class="menyfont" href="startpage.php">Home</a></td>
+					<td><a class="menyfont" href="about.php">About us</a></td>
+					<td id="searchboxmeny">
+						<div class="searchboxdiv" >
+						<form name="searchform" action="search_database.php" method="GET" onsubmit="return validateForm()">
+							<input class="searchbox" id="searchbox_menu" type="text" name="searchbox" placeholder="Search in the database..." >
+							<input  class="searchbutton" id="searchbuttonmeny" type="submit" value="Search">
+						</form>
+						</div>
+					</td>
 				</tr>
 			</table>
 			</div>
