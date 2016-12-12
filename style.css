@@ -69,9 +69,11 @@ body
  	width: 50%;
  	display:block;
  	margin:auto;
-	border: 1px solid;
+	border: 0px solid;
 	font-family: 'Exo 2', sans-serif;
 	border-right:none;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
 	/*border-top-left-radius: 5px;
 	border-bottom-left-radius: 5px;*/
 	
@@ -79,30 +81,31 @@ body
 
 /*Placeholder color*/
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-    color:    black;
+    color:    gray;
 }
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-   color:    black;
+   color:    gray;
    opacity:  1;
 }
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
-   color:    black;
+   color:    gray;
    opacity:  1;
 }
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
-   color:    black;
+   color:    gray;
 }
 
 .searchbutton 
 {
 	float: left;
-	background-color: light-gray;
-	border-right: 1px solid;
-	border-top: 1px solid;
-	border-bottom: 1px solid;
+	color: white;
+	background-color: #ff5454;
+	border-right: 0px solid;
+	border-top: 0px solid;
+	border-bottom: 0px solid;
 	border-left: 0px;
 	font-family: 'Exo 2', sans-serif;
-	height: 34px;
+	height: 32px;
 	border-top-right-radius: 5px;
 	border-bottom-right-radius: 5px;
 	cursor: pointer;
@@ -115,6 +118,7 @@ body
 	text-align: center;
 	margin: 0;
 	padding-top: 45vh;
+	padding-bottom: 2vh;
 	font-size: 70px;
 	color: white;
 
@@ -155,7 +159,6 @@ input
 {
 	display: block;
 	padding: 0 0 0 33.1%;
-	margin-top: 5px;
 }
 .startpagebg
 {
