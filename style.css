@@ -68,6 +68,9 @@ body
 	border: 1px solid;
 	font-family: 'Exo 2', sans-serif;
 	border-right:none;
+	/*border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;*/
+	
 }
 
 /*Placeholder color*/
