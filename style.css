@@ -3,6 +3,8 @@
 body
 {
 	margin: 0px;
+	background-color: #81d2fd;
+	text-align: center;
 }
 
 .meny
@@ -11,7 +13,6 @@ body
 	height: 80px;
 	display: block;
 	margin: auto;
-	background-color: white;
 	border: 2px solid #81d2fd;
 	position: static;
 	z-index: 1;
@@ -61,12 +62,25 @@ body
 	margin-top: 440px;
 }
 
+#legoman_img
+{
+	width: 150px;
+}
+#startpagetext
+{
+	width: 700px;
+	display: block;
+	margin: auto;
+	text-align: center;
+	margin-top: 40vh;
+}
+
 .searchbox
 {
  	background-color: white;
 	text-align: center;
  	height:30px;
- 	width: 50%;
+ 	width: 85%;
  	display:block;
  	margin:auto;
 	border: 0px solid;
@@ -117,10 +131,10 @@ body
 	font-family: 'Exo 2', sans-serif;
 	text-align: center;
 	margin: 0;
-	padding-top: 45vh;
 	padding-bottom: 2vh;
 	font-size: 70px;
 	color: white;
+
 
 }
 .menyfont
@@ -155,10 +169,20 @@ input
 	float:left;
 }
 
+#searchbox_menu
+{
+	border: 1px solid lightgray;
+	border-right: none;
+}
+
+#legoman_img
+
 .searchboxdiv
 {
+
 	display: block;
 	padding: 0 0 0 33.1%;
+	margin-top: 20px;
 }
 .startpagebg
 {
@@ -181,4 +205,12 @@ input
 #searchboxmeny
 {
 	width: 80%;
+}
+#searchbuttonmeny
+{
+	height: 34px;
+}
+#starttable td
+{	
+	text-align: center;
 }
