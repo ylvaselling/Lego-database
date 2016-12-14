@@ -10,7 +10,7 @@
 				die('MySQL connection error');
 			}
 	
-		/*Pagenation RÖR EJ, NICHT RÖREN, NO TOUCHIE*/
+		/*Pagenation*/
 		$recordsperpage = 20;
 
 		$sql = "SELECT count(sets.SetID) FROM sets";
@@ -33,11 +33,8 @@
 			$offset = 0;
 		}
 		$result = mysqli_query($connection, "SELECT DISTINCT inventory.SetID, sets.Setname, sets.Year FROM
-										inventory, sets, parts
-										WHERE parts.PartID=inventory.ItemID AND inventory.SetID=sets.SetID 
-										AND inventory.Extra='N'
-										AND (Partname LIKE '$found'
-										OR PartID='$found')");
+					inventory, sets, parts WHERE parts.PartID=inventory.ItemID AND inventory.SetID=sets.SetID 
+					AND inventory.Extra='N' AND (Partname LIKE '$found' OR PartID='$found')");
 
 		$pagerow = mysqli_num_rows($result);
 
@@ -60,12 +57,7 @@
 		{
 			die('Could not get data: ' . mysqli_error());
 		}
-			print($pagerow);
-			print('*');
-			print($page);
-			print('*');
-			print($maxpage);
-			
+		
 			if ($page == 0 && $page == ($maxpage-1))
 			{
 				echo "Last Page";
@@ -89,13 +81,11 @@
 				echo "Next Page";
 			}
 	
-
+			/*Query and Print*/
 			$result = mysqli_query($connection, "SELECT DISTINCT inventory.SetID, sets.Setname, sets.Year FROM
-										inventory, sets, parts
-										WHERE parts.PartID=inventory.ItemID AND inventory.SetID=sets.SetID 
-										AND inventory.Extra='N'
-										AND (Partname LIKE '$found'
-										OR PartID='$found') LIMIT $offset, $recordsperpage");
+						inventory, sets, parts WHERE parts.PartID=inventory.ItemID AND inventory.SetID=sets.SetID 
+						AND inventory.Extra='N' AND (Partname LIKE '$found' OR PartID='$found') 
+						LIMIT $offset, $recordsperpage");
 		
 		
 		print("<table class='displaytable'>\n<tr>");
@@ -113,8 +103,7 @@
 			print("<tr>");
 			for($i=0; $i<mysqli_num_fields($result); $i++)
 			{
-				print("<td>$row[$i]</td>");
-				
+				print("<td>$row[$i]</td>");	
 			}
 			
 				// Determine the file name for the small 80x60 pixels image, with a preference for JPG format.

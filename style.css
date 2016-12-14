@@ -37,26 +37,6 @@ body
 	margin-top: 10px;
 }
 
-.divleft
-{
-	height: 300px;
-	width: 500px;
-	padding: 20px;
-	float: left;
-	margin: 50px 0px 0px 50px; 
-	background-color: blue;
-}
-
-.divright
-{
-	height: 300px;
-	width: 500px;
-	padding: 20px;
-	float: right;
-	margin: 440px 50px 0px 0px; 
-	background-color: blue;
-}
-
 #legoman_img
 {
 	width: 150px;
@@ -83,10 +63,7 @@ body
 	font-family: 'Exo 2', sans-serif;
 	border-right:none;
 	border-top-left-radius: 5px;
-	border-bottom-left-radius: 5px;
-	/*border-top-left-radius: 5px;
-	border-bottom-left-radius: 5px;*/
-	
+	border-bottom-left-radius: 5px;	
 }
 
 /*Placeholder color*/
@@ -118,8 +95,7 @@ body
 	height: 32px;
 	border-top-right-radius: 5px;
 	border-bottom-right-radius: 5px;
-	cursor: pointer;
-	
+	cursor: pointer;	
 }
 
 .headingstart 
@@ -130,8 +106,6 @@ body
 	padding-bottom: 2vh;
 	font-size: 70px;
 	color: white;
-
-
 }
 .menyfont
 {
@@ -143,8 +117,7 @@ body
 menyfont, a:visited
 
 {
-	text-decoration: none;
-	
+	text-decoration: none;	
 }
 
 menyfont, a:active
@@ -171,11 +144,8 @@ input
 	border-right: none;
 }
 
-#legoman_img
-
 .searchboxdiv
 {
-
 	display: block;
 	padding: 0 0 0 33.1%;
 	margin-top: 20px;
@@ -198,14 +168,17 @@ input
 {
 	border: 2px solid #81d2fd;
 }
+
 #searchboxmeny
 {
 	width: 80%;
 }
+
 #searchbuttonmeny
 {
 	height: 34px;
 }
+
 #starttable td
 {	
 	text-align: center;
@@ -225,25 +198,50 @@ input
 	background-color: #81d2fd;
 }
 
-#divemil
+.divleft
 {
-	
+	height: 300px;
+	width: 500px;
+	padding: 20px;
+	float: left;
+	margin: 25px 0px 100px 0px; 
+	background-color: blue;
+	font-family: 'Exo 2', sans-serif;
+	border-radius: 30px;
 }
+
+.divright
+{
+	height: 300px;
+	width: 500px;
+	padding: 20px;
+	float: right;
+	margin: 125px 0px 0px 0px; 
+	background-color: blue;
+	font-family: 'Exo 2', sans-serif;
+	border-radius: 30px;
+}
+
 
 #divylva
 {
-	
+	background-color: #e495f9;
+}
+#divadrian
+{
+	background-color: #91fc8f;
 }
 
 #divdaniel
 {
-	margin-top: 440px;
+	background-color: #f2d576;
 }
 
-#divadrian
+#divemil
 {
-	
+	background-color: #fcb0c2;
 }
+
 
 
 

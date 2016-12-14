@@ -9,15 +9,13 @@ if (!$connection)
 			}
 			
 
-$keyword = $_GET['searchbox'];
+	$keyword = $_GET['searchbox'];
 
 
-
-
-$bricks = mysqli_query($connection, "SELECT DISTINCT inventory.ItemID, inventory.ColorID, colors.Colorname, parts.Partname 
-FROM inventory, parts, colors WHERE inventory.Extra='N' AND inventory.ItemTypeID='P' 
-AND inventory.ItemID=parts.PartID AND inventory.ColorID=colors.ColorID 
-AND (Partname LIKE '%$keyword%' OR PartID='$keyword') ORDER BY ItemID, ColorID DESC");
+	$bricks = mysqli_query($connection, "SELECT DISTINCT inventory.ItemID, inventory.ColorID, colors.Colorname, parts.Partname 
+	FROM inventory, parts, colors WHERE inventory.Extra='N' AND inventory.ItemTypeID='P' 
+	AND inventory.ItemID=parts.PartID AND inventory.ColorID=colors.ColorID 
+	AND (Partname LIKE '%$keyword%' OR PartID='$keyword') ORDER BY ItemID, ColorID DESC");
 
 
 /*Code that actually works*/
@@ -29,7 +27,7 @@ if(mysqli_num_rows($bricks)==0)
 
 else if(mysqli_num_rows($bricks)==1)
 {
-		/*Pagenation RÖR EJ, NICHT RÖREN, NO TOUCHIE*/
+		/*Pagenation*/
 		$recordsperpage = 20;
 
 		$sql = "SELECT count(sets.ID) FROM sets";
@@ -104,7 +102,7 @@ else if(mysqli_num_rows($bricks)==1)
 			}
 			
 	
-	
+		/*Query and Print*/
 		$result = mysqli_query($connection, "SELECT DISTINCT inventory.SetID, sets.Setname, sets.Year FROM
 											inventory, sets, parts WHERE parts.PartID=inventory.ItemID AND 
 											inventory.SetID=sets.SetID AND inventory.Extra='N'
@@ -208,12 +206,6 @@ else
 		{
 			die('Could not get data: ' . mysqli_error());
 		}
-			
-			print($pagerow);
-			print('*');
-			print($page);
-			print('*');
-			print($maxpage);
 			
 			if ($page == 0 && $page == ($maxpage-1))
 			{
