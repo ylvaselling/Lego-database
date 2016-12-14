@@ -214,3 +214,17 @@ input
 {	
 	text-align: center;
 }
+
+#choosebrick
+{
+	background-image: images/choose_lego.png;
+	background-repeat: no-repeat;
+	background-position: left;
+	padding: 0px;
+	width: 150px;
+}
+
+.last_col
+{
+	background-color: #81d2fd;
+}

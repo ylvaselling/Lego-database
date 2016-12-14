@@ -8,7 +8,7 @@
 			{
 				die('MySQL connection error');
 			}
-	$result = mysqli_query($connection, "SELECT inventory.SetID, sets.Setname, sets.Year FROM
+	$result = mysqli_query($connection, "SELECT DISTINCT inventory.SetID, sets.Setname, sets.Year FROM
 										inventory, sets, parts
 										WHERE parts.PartID=inventory.ItemID AND inventory.SetID=sets.SetID 
 										AND inventory.Extra='N'

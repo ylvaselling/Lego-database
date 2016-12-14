@@ -12,7 +12,7 @@ if (!$connection)
 $keyword = $_GET['searchbox'];
 
 
-$bricks = mysqli_query($connection, "SELECT inventory.ItemID, inventory.ColorID, colors.Colorname, parts.Partname 
+$bricks = mysqli_query($connection, "SELECT DISTINCT inventory.ItemID, inventory.ColorID, colors.Colorname, parts.Partname 
 FROM inventory, parts, colors WHERE inventory.Extra='N' AND inventory.ItemTypeID='P' 
 AND inventory.ItemID=parts.PartID AND inventory.ColorID=colors.ColorID 
 AND (Partname LIKE '%$keyword%' OR PartID='$keyword') ORDER BY ItemID, ColorID DESC");
@@ -201,7 +201,7 @@ else
 			}
 			print("<td><img src=\"$prefix$filename\" alt=\"Part $ItemID\"/></td>");
 			
-			print("<td><input class='searchbutton' type='submit' name='foundpart' value='$ItemID'></td>");
+			print("<td class='last_col'><input id='choosebrick' type='image' src='images/choose_lego.png' name='foundpart' value='$ItemID'></td>");
 
 			print("</tr>\n");	
 		}

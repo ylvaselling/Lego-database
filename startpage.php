@@ -28,8 +28,6 @@
 						<input  class="searchbutton" type="submit" value="Search">
 					</form>
 				</div>
-
-	
 		</div>
 	</body>
 
