@@ -108,8 +108,7 @@ th, td, tr
 	border-right:none;
 	border-top-left-radius: 5px;
 	border-bottom-left-radius: 5px;
-	/*border-top-left-radius: 5px;
-	border-bottom-left-radius: 5px;*/
+	
 	
 }
 
@@ -200,15 +199,7 @@ input#searchbox_menu.searchbox
 	margin-left: 15px;
 }
 
-#legoman_img
 
-.searchboxdiv
-{
-
-	display: block;
-	padding: 0 0 0 33.1%;
-	margin-top: 20px;
-}
 .startpagebg
 {
 	background-color: #81d2fd;
