@@ -1,4 +1,5 @@
 <?php 	include "menu.txt";
+	
 	echo "<div class='middlediv'>"; 
 	
 	$found = $_GET['foundpart'];
@@ -8,17 +9,98 @@
 			{
 				die('MySQL connection error');
 			}
-	$result = mysqli_query($connection, "SELECT DISTINCT inventory.SetID, sets.Setname, sets.Year FROM
+	
+		/*Pagenation RÖR EJ, NICHT RÖREN, NO TOUCHIE*/
+		$recordsperpage = 20;
+
+		$sql = "SELECT count(sets.SetID) FROM sets";
+
+		$returnvalue = mysqli_query($connection, $sql);
+
+		if(! $returnvalue)
+		{
+			die('Could not get data: ' . mysqli_error());
+		}
+
+		if(isset($_GET['page']))
+		{
+			$page = $_GET['page']+1;
+			$offset = $recordsperpage * $page;
+		}
+		else
+		{
+			$page = 0;
+			$offset = 0;
+		}
+		$result = mysqli_query($connection, "SELECT DISTINCT inventory.SetID, sets.Setname, sets.Year FROM
 										inventory, sets, parts
 										WHERE parts.PartID=inventory.ItemID AND inventory.SetID=sets.SetID 
 										AND inventory.Extra='N'
 										AND (Partname LIKE '$found'
 										OR PartID='$found')");
+
+		$pagerow = mysqli_num_rows($result);
+
+		$left_rec = $pagerow - ($page * $recordsperpage);
+		
+		$maxpage=0;
+		
+		if($pagerow%$recordsperpage==0)
+		{
+			$maxpage = $pagerow/$recordsperpage;
+		}
+		else if($pagerow%$recordsperpage!=0)
+		{
+			$maxpage = (($pagerow-($pagerow%$recordsperpage))/$recordsperpage)+1;
+		}
+
+		$returnvalue = mysqli_query($connection, $sql);
+
+		if(! $returnvalue)
+		{
+			die('Could not get data: ' . mysqli_error());
+		}
+			print($pagerow);
+			print('*');
+			print($page);
+			print('*');
+			print($maxpage);
+			
+			if ($page == 0 && $page == ($maxpage-1))
+			{
+				echo "Last Page";
+				echo "Next Page";
+			}
+			else if($page > 0 && $page < ($maxpage-1))
+			{
+				$last = $page - 2;
+				echo "<a href = \"$_PHP_SELF?foundpart=$found&page=$last\">Last Page</a>";
+				echo "<a href = \"$_PHP_SELF?foundpart=$found&page=$page\">Next Page</a>";
+			}
+			else if ($page == 0)
+			{
+				echo "Last Page";
+				echo "<a href = \"$_PHPSELF?foundpart=$found&page=$page\">Next Page</a>";
+			}
+			else if ($page == ($maxpage-1))
+			{
+				$last = $page - 2;
+				echo "<a href = \"$_PHPSELF?foundpart=$found&page=$last\">Last Page</a>";
+				echo "Next Page";
+			}
+	
+
+			$result = mysqli_query($connection, "SELECT DISTINCT inventory.SetID, sets.Setname, sets.Year FROM
+										inventory, sets, parts
+										WHERE parts.PartID=inventory.ItemID AND inventory.SetID=sets.SetID 
+										AND inventory.Extra='N'
+										AND (Partname LIKE '$found'
+										OR PartID='$found') LIMIT $offset, $recordsperpage");
+		
+		
 		print("<table class='displaytable'>\n<tr>");
 		while($fieldinfo = mysqli_fetch_field($result))
 		{
-			
-			
 			print("<th>". $fieldinfo->name . "</th>");
 		}
 		
