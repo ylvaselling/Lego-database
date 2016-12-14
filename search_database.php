@@ -11,7 +11,6 @@ if (!$connection)
 
 	$keyword = $_GET['searchbox'];
 
-
 	$bricks = mysqli_query($connection, "SELECT DISTINCT inventory.ItemID, inventory.ColorID, colors.Colorname, parts.Partname 
 	FROM inventory, parts, colors WHERE inventory.Extra='N' AND inventory.ItemTypeID='P' 
 	AND inventory.ItemID=parts.PartID AND inventory.ColorID=colors.ColorID 
@@ -26,6 +25,7 @@ if(mysqli_num_rows($bricks)==0)
 
 else if(mysqli_num_rows($bricks)==1)
 {
+		echo "<div class='header'><h1>These are your sets!</h1></div>";
 		/*Pagenation*/
 		$recordsperpage = 20;
 
@@ -76,30 +76,7 @@ else if(mysqli_num_rows($bricks)==1)
 			die('Could not get data: ' . mysqli_error());
 		}
 			
-			if ($page == 0 && $page == ($maxpage-1))
-			{
-				echo "Last Page";
-				echo "Next Page";
-			}
-			else if($page > 0 && $page < ($maxpage-1))
-			{
-				$last = $page - 2;
-				echo "<a href = \"$_PHP_SELF?searchbox=$keyword&page=$last\">Last Page</a>";
-				echo "<a href = \"$_PHP_SELF?searchbox=$keyword&page=$page\">Next Page</a>";
-			}
-			
-			else if ($page == ($maxpage-1))
-			{
-				$last = $page - 2;
-				echo "<a href = \"$_PHPSELF?searchbox=$keyword&page=$last\">Last Page</a>";
-				echo "Next Page";
-			}
-			else if ($page == 0)
-			{
-				echo "Last Page";
-				echo "<a href = \"$_PHPSELF?searchbox=$keyword&page=$page\">Next Page</a>";
-			}
-			
+
 	
 		/*Query and Print*/
 		$result = mysqli_query($connection, "SELECT DISTINCT inventory.SetID, sets.Setname, sets.Year FROM
@@ -152,6 +129,41 @@ else if(mysqli_num_rows($bricks)==1)
 			   print("<td><img src=\"$prefix$filename\" alt=\"Part $SetID\"/></td>");
 			   print("</tr>\n");
 		}
+		echo "</table>";
+		echo "</div>";
+		echo "<div class='pagefooter'>";
+		
+				
+			if ($page == 0 && $page == ($maxpage-1))
+			{
+				echo "<img class='pagebutton' src='images/prev.png' alt='previous'>";
+				echo "<img  class='pagebutton' src='images/next.png' alt='next'>";
+			}
+			else if($page > 0 && $page < ($maxpage-1))
+			{
+				$last = $page - 2;
+				echo "<a href = \"$_PHP_SELF?searchbox=$keyword&page=$last\">
+				<img class='pagebutton' src='images/prev.png' alt='previous'></a>";
+				echo "<a href = \"$_PHP_SELF?searchbox=$keyword&page=$page\">
+				<img  class='pagebutton' src='images/next.png' alt='next'>
+				</a>";
+			}
+			else if ($page == 0)
+			{
+				echo "<img class='pagebutton' src='images/prev.png' alt='previous'>";
+				echo "<a href = \"$_PHPSELF?searchbox=$keyword&page=$page\">
+				<img  class='pagebutton' src='images/next.png' alt='next'></a>";
+			}
+			else if ($page == ($maxpage-1))
+			{
+				$last = $page - 2;
+				echo "<a href = \"$_PHPSELF?searchbox=$keyword&page=$last\">
+				<img class='pagebutton' src='images/prev.png' alt='previous'></a>";
+				echo "<img  class='pagebutton' src='images/next.png' alt='next'>";
+			}
+		echo "</div>";
+
+			
 }
 
 else
@@ -206,28 +218,7 @@ else
 			die('Could not get data: ' . mysqli_error());
 		}
 			
-			if ($page == 0 && $page == ($maxpage-1))
-			{
-				echo "Last Page";
-				echo "Next Page";
-			}
-			else if($page > 0 && $page < ($maxpage-1))
-			{
-				$last = $page - 2;
-				echo "<a href = \"$_PHP_SELF?searchbox=$keyword&page=$last\">Last Page</a>";
-				echo "<a href = \"$_PHP_SELF?searchbox=$keyword&page=$page\">Next Page</a>";
-			}
-			else if ($page == 0)
-			{
-				echo "Last Page";
-				echo "<a href = \"$_PHPSELF?searchbox=$keyword&page=$page\">Next Page</a>";
-			}
-			else if ($page == ($maxpage-1))
-			{
-				$last = $page - 2;
-				echo "Next Page";
-				echo "<a href = \"$_PHPSELF?searchbox=$keyword&page=$last\">Last Page</a>";
-			}
+			
 		
 		
 			
@@ -284,6 +275,41 @@ else
 
 			print("</tr>\n");	
 		}
+		
+		
+		echo "</table>";
+		echo "</div>";
+		echo "<div class='pagefooter'>";
+		
+				
+			if ($page == 0 && $page == ($maxpage-1))
+			{
+				echo "<img class='pagebutton' src='images/prev.png' alt='previous'>";
+				echo "<img  class='pagebutton' src='images/next.png' alt='next'>";
+			}
+			else if($page > 0 && $page < ($maxpage-1))
+			{
+				$last = $page - 2;
+				echo "<a href = \"$_PHP_SELF?searchbox=$keyword&page=$last\">
+				<img class='pagebutton' src='images/prev.png' alt='previous'></a>";
+				echo "<a href = \"$_PHP_SELF?searchbox=$keyword&page=$page\">
+				<img  class='pagebutton' src='images/next.png' alt='next'>
+				</a>";
+			}
+			else if ($page == 0)
+			{
+				echo "<img class='pagebutton' src='images/prev.png' alt='previous'>";
+				echo "<a href = \"$_PHPSELF?searchbox=$keyword&page=$page\">
+				<img  class='pagebutton' src='images/next.png' alt='next'></a>";
+			}
+			else if ($page == ($maxpage-1))
+			{
+				$last = $page - 2;
+				echo "<a href = \"$_PHPSELF?searchbox=$keyword&page=$last\">
+				<img class='pagebutton' src='images/prev.png' alt='previous'></a>";
+				echo "<img  class='pagebutton' src='images/next.png' alt='next'>";
+			}
+		echo "</div>";
 
 }
 
@@ -292,7 +318,7 @@ else
 		
 ?>
 
-	</div>
+
 	</body>
 	</html>
 	

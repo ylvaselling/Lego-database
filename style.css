@@ -9,13 +9,14 @@ body
 
 .meny
 {
-	width: 60vw;
+	width: 1000px;
 	height: 80px;
 	display: block;
 	margin: auto;
 	border: 2px solid #81d2fd;
 	position: static;
 	z-index: 1;
+
 }
 
 .meny td
@@ -31,10 +32,14 @@ body
 .middlediv
 {
 	background-color: white;
-	width: 60vw;
+	width: 1000px;
+	height: auto;
 	display: block;
 	margin: auto;
 	margin-top: 10px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	
 }
 
 .legoman_img
@@ -53,6 +58,27 @@ body
     background-position: center;
 	font-family: 'Exo 2', sans-serif;	
 	padding: 50px 150px;
+
+}
+
+table
+{
+    border-spacing: 6px; 
+	table-layout: fixed;
+}
+
+
+th, td, tr
+{	
+	border-radius: 5px;
+	table-layout: fixed;
+	height: 60px;
+	width: auto;
+}
+
+#block3 
+{
+	margin-top: 440px;
 }
 
 #startpagetext
@@ -157,12 +183,17 @@ input
 	border-right: none;
 }
 
-.searchboxdiv
+input#searchbox_menu.searchbox
 {
-	display: block;
-	padding: 0 0 0 33.1%;
-	margin-top: 20px;
+	margin-left: 25px;
 }
+
+.pagebutton
+{
+	margin-top: 20px;
+	width: 100px;
+}
+
 .startpagebg
 {
 	background-color: #81d2fd;
@@ -170,16 +201,42 @@ input
 }
 
 .displaytable
-{
+{	
 	margin: 0 auto;
 	text-align: center;
 	font-family: 'Exo 2', sans-serif;
 	border-collapse: collapse;
+	
 }
 
+.displaytable td:first-child+td+td+td
+{	
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+	font-family: 'Exo 2', sans-serif;
+	border-collapse: collapse;
+	
+}
+
+.displaytableset
+{	
+	margin: 0 auto;
+	width: 100%;
+	text-align: center;
+	font-family: 'Exo 2', sans-serif;
+	border-collapse: collapse;
+}
 .displaytable td
 {
-	border: 2px solid #81d2fd;
+	border: 1px solid #81d2fd;
+	border-radius: 5px;
+}
+
+.displaytableset td
+{
+	border: 1px solid #81d2fd;
+	border-radius: 5px;
 }
 
 #searchboxmeny
@@ -201,14 +258,26 @@ input
 {
 	background-image: images/choose_lego.png;
 	background-repeat: no-repeat;
-	background-position: left;
+	background-position: center;
 	padding: 0px;
 	width: 150px;
+
+}
+input#choosebrick
+{
+	float: right;
 }
 
-.last_col
+.pagefooter
 {
-	background-color: #81d2fd;
+	display: block;
+	float: bottom;
+	height: 100px;
+    width: 1000px;
+	background-color: white;
+	margin: 0 auto;
+	border-radius: 0 0 5px 5px;
+	
 }
 
 .divleft
@@ -254,7 +323,6 @@ input
 {
 	background-color: #fcb0c2;
 }
-
 
 
 

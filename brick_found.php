@@ -9,6 +9,7 @@
 			{
 				die('MySQL connection error');
 			}
+
 	
 		/*Pagenation*/
 		$recordsperpage = 20;
@@ -57,29 +58,7 @@
 		{
 			die('Could not get data: ' . mysqli_error());
 		}
-		
-			if ($page == 0 && $page == ($maxpage-1))
-			{
-				echo "Last Page";
-				echo "Next Page";
-			}
-			else if($page > 0 && $page < ($maxpage-1))
-			{
-				$last = $page - 2;
-				echo "<a href = \"$_PHP_SELF?foundpart=$found&page=$last\">Last Page</a>";
-				echo "<a href = \"$_PHP_SELF?foundpart=$found&page=$page\">Next Page</a>";
-			}
-			else if ($page == 0)
-			{
-				echo "Last Page";
-				echo "<a href = \"$_PHPSELF?foundpart=$found&page=$page\">Next Page</a>";
-			}
-			else if ($page == ($maxpage-1))
-			{
-				$last = $page - 2;
-				echo "<a href = \"$_PHPSELF?foundpart=$found&page=$last\">Last Page</a>";
-				echo "Next Page";
-			}
+
 	
 			/*Query and Print*/
 			$result = mysqli_query($connection, "SELECT DISTINCT inventory.SetID, sets.Setname, sets.Year FROM
@@ -89,6 +68,15 @@
 		
 		
 		print("<table class='displaytable'>\n<tr>");
+
+	$result = mysqli_query($connection, "SELECT DISTINCT inventory.SetID, sets.Setname, sets.Year FROM
+										inventory, sets, parts
+										WHERE parts.PartID=inventory.ItemID AND inventory.SetID=sets.SetID 
+										AND inventory.Extra='N'
+										AND (Partname LIKE '$found'
+										OR PartID='$found')");
+		print("<table class='displaytableset'>\n<tr>");
+
 		while($fieldinfo = mysqli_fetch_field($result))
 		{
 			print("<th>". $fieldinfo->name . "</th>");
@@ -112,31 +100,87 @@
 			   
 			   // Query the database to see which files, if any, are available
 			   $imagesearch = mysqli_query($connection, "SELECT * FROM images WHERE ItemTypeID='S' AND 
-			   ItemID='$SetID'");
+			   ItemID='$SetID' ");
 			   // By design, the query above should return exactly one row.
 			   $imageinfo = mysqli_fetch_array($imagesearch);
+				
+				if($imageinfo['has_largejpg']) // Use JPG if it exists
+			   { 
+					$large_filename = "SL/$SetID.jpg";
+					
+			   } 
+			   else if($imageinfo['has_largegif']) // Use GIF if JPG is unavailable
+			   { 
+				
+					$large_filename = "SL/$SetID.gif";
+					
+			   }
+			   else // If neither format is available, insert a placeholder image
+			   { 
+					$large_filename = "noimage_large.png";
+					
+			   }
 				
 				if($imageinfo['has_jpg']) // Use JPG if it exists
 			   { 
 					$filename = "S/$SetID.jpg";
+					
 			   } 
 			   else if($imageinfo['has_gif']) // Use GIF if JPG is unavailable
 			   { 
 					$filename = "S/$SetID.gif";
+				
 			   }
 			   else // If neither format is available, insert a placeholder image
 			   { 
 					$filename = "noimage_small.png";
+					
 			   }
-			   print("<td><img id='myImg' src=\"$prefix$filename\" alt=\"Set $SetID\"  /></td>");
+			   print("<td><a href='$prefix$large_filename' </a> <img id='$SetID' class='small_img' src=\"$prefix$filename\" alt=\"$Setname\"  /></td>");
 			   print("</tr>\n");
+
 		}
+		echo "</table>";
+		echo "</div>";
+		echo "<div class='pagefooter'>";
+		
+				
+			if ($page == 0 && $page == ($maxpage-1))
+			{
+				echo "<img class='pagebutton' src='images/prev.png' alt='previous'>";
+				echo "<img  class='pagebutton' src='images/next.png' alt='next'>";
+			}
+			else if($page > 0 && $page < ($maxpage-1))
+			{
+				$last = $page - 2;
+				echo "<a href = \"$_PHP_SELF?searchbox=$keyword&page=$last\">
+				<img class='pagebutton' src='images/prev.png' alt='previous'></a>";
+				echo "<a href = \"$_PHP_SELF?searchbox=$keyword&page=$page\">
+				<img  class='pagebutton' src='images/next.png' alt='next'>
+				</a>";
+			}
+			else if ($page == 0)
+			{
+				echo "<img class='pagebutton' src='images/prev.png' alt='previous'>";
+				echo "<a href = \"$_PHPSELF?searchbox=$keyword&page=$page\">
+				<img  class='pagebutton' src='images/next.png' alt='next'></a>";
+			}
+			else if ($page == ($maxpage-1))
+			{
+				$last = $page - 2;
+				echo "<a href = \"$_PHPSELF?searchbox=$keyword&page=$last\">
+				<img class='pagebutton' src='images/prev.png' alt='previous'></a>";
+				echo "<img  class='pagebutton' src='images/next.png' alt='next'>";
+			}
+		echo "</div>";
+
+		
 		mysqli_close($connection);
 		
 		
 ?>
 
-	</div>
+
 	</body>
 	</html>
 	
