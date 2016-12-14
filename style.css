@@ -9,13 +9,14 @@ body
 
 .meny
 {
-	width: 60vw;
+	width: 1000px;
 	height: 80px;
 	display: block;
 	margin: auto;
 	border: 2px solid #81d2fd;
 	position: static;
 	z-index: 1;
+
 }
 
 .meny td
@@ -31,10 +32,14 @@ body
 .middlediv
 {
 	background-color: white;
-	width: 60vw;
+	width: 1000px;
+	height: auto;
 	display: block;
 	margin: auto;
 	margin-top: 10px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	
 }
 
 .divleft
@@ -55,6 +60,21 @@ body
 	float: right;
 	margin: 440px 50px 0px 0px; 
 	background-color: blue;
+}
+
+table
+{
+    border-spacing: 6px; 
+	table-layout: fixed;
+}
+
+
+th, td, tr
+{	
+	border-radius: 5px;
+	table-layout: fixed;
+	height: 60px;
+	width: auto;
 }
 
 #block3 
@@ -175,6 +195,11 @@ input
 	border-right: none;
 }
 
+input#searchbox_menu.searchbox
+{
+	margin-left: 15px;
+}
+
 #legoman_img
 
 .searchboxdiv
@@ -191,16 +216,42 @@ input
 }
 
 .displaytable
-{
+{	
 	margin: 0 auto;
 	text-align: center;
 	font-family: 'Exo 2', sans-serif;
 	border-collapse: collapse;
+	
 }
 
+.displaytable td:first-child+td+td+td
+{	
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+	font-family: 'Exo 2', sans-serif;
+	border-collapse: collapse;
+	
+}
+
+.displaytableset
+{	
+	margin: 0 auto;
+	width: 100%;
+	text-align: center;
+	font-family: 'Exo 2', sans-serif;
+	border-collapse: collapse;
+}
 .displaytable td
 {
-	border: 2px solid #81d2fd;
+	border: 1px solid #81d2fd;
+	border-radius: 5px;
+}
+
+.displaytableset td
+{
+	border: 1px solid #81d2fd;
+	border-radius: 5px;
 }
 #searchboxmeny
 {
@@ -219,12 +270,20 @@ input
 {
 	background-image: images/choose_lego.png;
 	background-repeat: no-repeat;
-	background-position: left;
+	background-position: center;
 	padding: 0px;
 	width: 150px;
+
+}
+input#choosebrick
+{
+	float: right;
 }
 
 .last_col
 {
-	background-color: #81d2fd;
+	
+
 }
+
+
