@@ -21,8 +21,7 @@ if (!$connection)
 /*Code that actually works*/
 if(mysqli_num_rows($bricks)==0)
 {
-	print($keyword);
-    print("No results");
+	header("Location: http://www.student.itn.liu.se/~adran117/tnmk30/Lego-database/noresult.php");
 }
 
 else if(mysqli_num_rows($bricks)==1)
