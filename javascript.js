@@ -13,7 +13,7 @@ function CustomAlert(){
         dialogbox.style.display = "block";
         document.getElementById('dialogboxhead').innerHTML = "Acknowledge This Message";
         document.getElementById('dialogboxbody').innerHTML = dialog;
-        document.getElementById('dialogboxfoot').innerHTML = '<button onclick="Alert.ok()">OK</button>';
+        document.getElementById('dialogboxfoot').innerHTML = "<button id='alert_button' onclick='Alert.ok()'><h1>OK</h1></button>";
     }
 	this.ok = function(){
 		document.getElementById('dialogbox').style.display = "none";

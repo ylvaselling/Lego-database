@@ -372,28 +372,44 @@ input#choosebrick
 }
 
 
-/*CUSTOMALERT*/
+/*CUSTOMALERT source https://www.developphp.com/video/JavaScript/Custom-Alert-Box-Programming-Tutorial*/
 
 #dialogoverlay{
 	display: none;
-	opacity: .8;
+	opacity: .2;
 	position: fixed;
 	top: 0px;
 	left: 0px;
-	background: #FFF;
+	background: black;
 	width: 100%;
 	z-index: 10;
 }
 #dialogbox{
+	font-family: 'Exo 2', sans-serif;
+	color:black;
 	display: none;
 	position: fixed;
-	background: #000;
+	background: white;
 	border-radius:7px; 
 	width:550px;
 	z-index: 10;
 }
-#dialogbox > div{ background:#FFF; margin:8px; }
-#dialogbox > div > #dialogboxhead{ background: #666; font-size:19px; padding:10px; color:#CCC; }
-#dialogbox > div > #dialogboxbody{ background:#333; padding:20px; color:#FFF; }
-#dialogbox > div > #dialogboxfoot{ background: #666; padding:10px; text-align:right; }
+#dialogbox > div{ margin:8px; }
+#dialogbox > div > #dialogboxhead{ padding:10px; }
+#dialogbox > div > #dialogboxbody{  padding:20px; }
+#dialogbox > div > #dialogboxfoot{  padding:10px; text-align:right; }
+
+#alert_button
+{
+	color: white;
+	background-color: #ff5454;
+	height: 50px;
+	width: 70px;
+	border: 0px;
+	border-radius: 5px;
+	cursor: pointer;	
+}
+
+
+
 
