@@ -1,7 +1,9 @@
-<?php 	include "menu.txt";
-		
-echo "<div class='middlediv'>"; 
 
+<?php 
+	
+
+ 	include "menu.txt";
+		
 $connection = mysqli_connect("mysql.itn.liu.se","lego","", "lego");
 if (!$connection) 
 			{
@@ -11,10 +13,13 @@ if (!$connection)
 
 	$keyword = $_GET['searchbox'];
 
-	$bricks = mysqli_query($connection, "SELECT DISTINCT inventory.ItemID, inventory.ColorID, colors.Colorname, parts.Partname 
-	FROM inventory, parts, colors WHERE inventory.Extra='N' AND inventory.ItemTypeID='P' 
-	AND inventory.ItemID=parts.PartID AND inventory.ColorID=colors.ColorID 
-	AND (Partname LIKE '%$keyword%' OR PartID='$keyword') ORDER BY ItemID, ColorID DESC");
+
+
+$bricks = mysqli_query($connection, "SELECT DISTINCT inventory.ItemID, inventory.ColorID, colors.Colorname, parts.Partname 
+FROM inventory, parts, colors WHERE inventory.Extra='N' AND inventory.ItemTypeID='P' 
+AND inventory.ItemID=parts.PartID AND inventory.ColorID=colors.ColorID 
+AND (Partname LIKE '%$keyword%' OR PartID='$keyword') ORDER BY parts.Partname ASC");
+
 
 
 /*Code that actually works*/
@@ -25,13 +30,22 @@ if(mysqli_num_rows($bricks)==0)
 
 else if(mysqli_num_rows($bricks)==1)
 {
+
 		$found = $keyword;
 		
 		header("Location: brick_found.php?foundpart=$found");			
+
 }
 
 else
 {
+	
+		echo "<div class='header'>
+		<h2>Many Lego pieces matched your search. <br> Choose one to display the sets it appears in!</h2>
+		</div>";
+		
+		echo "<div class='middlediv'>"; 
+	
 		/*Pagenation RÖR EJ, NICHT RÖREN, NO TOUCHIE*/
 		$recordsperpage = 20;
 
@@ -81,11 +95,11 @@ else
 		{
 			die('Could not get data: ' . mysqli_error());
 		}
-
+			
 			$bricks = mysqli_query($connection, "SELECT DISTINCT inventory.ItemID, inventory.ColorID, colors.Colorname, parts.Partname 
 			FROM inventory, parts, colors WHERE inventory.Extra='N' AND inventory.ItemTypeID='P' 
 			AND inventory.ItemID=parts.PartID AND inventory.ColorID=colors.ColorID 
-			AND (Partname LIKE '%$keyword%' OR PartID='$keyword') ORDER BY ItemID, ColorID DESC 
+			AND (Partname LIKE '%$keyword%' OR PartID='$keyword') ORDER BY parts.Partname ASC 
 			LIMIT $offset, $recordsperpage");
 	
 	print("<table class='displaytable'>\n<tr>");
@@ -139,8 +153,6 @@ else
 		
 		echo "</table>";
 		echo "</div>";
-		
-		/*Page buttons*/
 		echo "<div class='pagefooter'>";
 		
 				

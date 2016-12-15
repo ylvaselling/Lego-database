@@ -1,8 +1,15 @@
 <?php 	include "menu.txt";
 	
+
+
+	$found = $_GET['foundpart'];
+	
+	echo "<div class='header'>
+		<h1>These sets are what we found!</h1>
+		</div>";
+		
 	echo "<div class='middlediv'>"; 
 	
-	$found = $_GET['foundpart'];
 	
 	$connection = mysqli_connect("mysql.itn.liu.se","lego","", "lego");
 	if (!$connection) 

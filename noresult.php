@@ -10,7 +10,7 @@
 		<body>
 		<div class="speechbubble">
 		<h1>Oh no!</h1>
-		<p>Unfortunately we could not find any matches for your search, try again!</p>
+		<h3>Unfortunately we could not find any matches for your search, try again!</h3>
 		</div>
 		<div id="startpagetext">
 		<table id="starttable">
@@ -31,6 +31,16 @@
 						<input  class="searchbutton" type="submit" value="Search">
 					</form>
 				</div>
+				
+				<!--CUSTOM ALERT-->
+				<div id="dialogoverlay"></div>
+				<div id="dialogbox">
+						<div>
+							<div id="dialogboxhead"></div>
+							<div id="dialogboxbody"></div>
+							<div id="dialogboxfoot"></div>
+						</div>
+				</div>	
 
 
 	
