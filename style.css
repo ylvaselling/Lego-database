@@ -422,22 +422,5 @@ input#choosebrick
 	cursor: pointer;	
 }
 
-/*
 
-.speechbubble
-{	
-	display: block;
-	margin: 100px auto 0 auto;
-	background-image: url("images/speechbubble_right.svg");
-	background-repeat: no-repeat;
-	width: 500px;
-	height: 220px;
-    background-position: center;
-	font-family: 'Exo 2', sans-serif;	
-	padding: 50;
-
-}
-
-
-*/
 
