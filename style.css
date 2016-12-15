@@ -94,7 +94,7 @@ body
 {
 	display: block;
 	margin: 100px auto 0 auto;
-	background-image: url("images/speechbubble_left.png");
+	background-image: url("about_left.svg");
 	background-repeat: no-repeat;
 	width: 420px;
 	height: 300px;
