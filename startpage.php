@@ -11,7 +11,7 @@
 		<body>
 		<div class="speechbubble">
 		<h1>Welcome!</h1>
-		<h2>Search for a Lego piece in the searchbar to find you favorite Lego set!</h2>
+		<h3>Search for a Lego piece in the searchbar to find you favorite Lego set!</h3>
 		</div>
 		<div id="startpagetext">
 		<table id="starttable">
@@ -20,7 +20,7 @@
 					<h1 class="headingstart">LEGOSEARCHER</h1>
 				</td>
 				<td>
-					<img class="legoman_img" src="images/legoman.png" alt="legoman"/>
+					<img class="legoman_img" src="images/legoman.png" alt="legoman">
 				</td>
 			</tr>
 		</table>	
