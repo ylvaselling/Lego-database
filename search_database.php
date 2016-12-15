@@ -23,11 +23,12 @@ AND (Partname LIKE '%$keyword%' OR PartID='$keyword') ORDER BY parts.Partname AS
 /*Code that actually works*/
 if(mysqli_num_rows($bricks)==0)
 {
-	header("Location: http://www.student.itn.liu.se/~adran117/tnmk30/Lego-database/noresult.php");
+	header("Location: noresult.php");
 }
 
 else if(mysqli_num_rows($bricks)==1)
 {
+/*
 
 	$result = mysqli_query($connection, "SELECT DISTINCT inventory.SetID, sets.Setname, sets.Year FROM
 										inventory, sets, parts
@@ -38,17 +39,14 @@ else if(mysqli_num_rows($bricks)==1)
 		print("<table class='displaytableset'>\n<tr>");
 
 		echo "<div class='header'><h1>These are your sets!</h1></div>";
-		/*Pagenation*/
+		/*Pagenation
+
 		$recordsperpage = 20;
 
 		$sql = "SELECT count(sets.ID) FROM sets";
 
 		$returnvalue = mysqli_query($connection, $sql);
 
-		if(! $returnvalue)
-		{
-			die('Could not get data: ' . mysqli_error());
-		}
 
 		if(isset($_GET['page']))
 		{
@@ -83,14 +81,8 @@ else if(mysqli_num_rows($bricks)==1)
 
 		$returnvalue = mysqli_query($connection, $sql);
 
-		if(! $returnvalue)
-		{
-			die('Could not get data: ' . mysqli_error());
-		}
-			
 
-	
-		/*Query and Print*/
+		Query and Print
 		$result = mysqli_query($connection, "SELECT DISTINCT inventory.SetID, sets.Setname, sets.Year FROM
 											inventory, sets, parts WHERE parts.PartID=inventory.ItemID AND 
 											inventory.SetID=sets.SetID AND inventory.Extra='N'
@@ -98,7 +90,7 @@ else if(mysqli_num_rows($bricks)==1)
 											OR PartID='$keyword') LIMIT $offset, $recordsperpage");
 		
 		
-		/*Print results*/
+		/*Print results
 		print("<table class='displaytable'>\n<tr>");
 
 		while($fieldinfo = mysqli_fetch_field($result))
@@ -191,7 +183,11 @@ else if(mysqli_num_rows($bricks)==1)
 				<img class='pagebutton' src='images/prev.png' alt='previous'></a>";
 				echo "<img  class='pagebutton' src='images/next.png' alt='next'>";
 			}
-		echo "</div>";
+		echo "</div>";*/
+
+		$found = $keyword;
+		
+		header("Location: brick_found.php?foundpart=$found");
 
 			
 }
@@ -299,7 +295,7 @@ else
 			{ 
 				$filename = "noimage_small.png"; // If neither format is available, insert a placeholder image
 			}
-			print("<td><a href='$prefix$large_filename' </a><img src=\"$prefix$filename\" alt=\"Part $ItemID\"/></td>");
+			print("<td><img src=\"$prefix$filename\" alt=\"Part $ItemID\"/></td>");
 			
 			print("<td class='last_col'><input id='choosebrick' type='image' src='images/choose_lego.png' name='foundpart' value='$ItemID'></td>");
 
