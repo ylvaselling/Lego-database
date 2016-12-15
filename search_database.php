@@ -1,4 +1,8 @@
-<?php 	include "menu.txt";
+
+<?php 
+	
+
+ 	include "menu.txt";
 		
 $connection = mysqli_connect("mysql.itn.liu.se","lego","", "lego");
 if (!$connection) 

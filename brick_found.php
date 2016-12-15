@@ -40,10 +40,15 @@
 			$page = 0;
 			$offset = 0;
 		}
-		$result = mysqli_query($connection, "SELECT DISTINCT inventory.SetID, sets.Setname, sets.Year FROM
-					inventory, sets, parts WHERE parts.PartID=inventory.ItemID AND inventory.SetID=sets.SetID 
-					AND inventory.Extra='N' AND (Partname LIKE '$found' OR PartID='$found')");
-
+	
+		$result = mysqli_query($connection, "SELECT DISTINCT inventory.SetID, sets.Setname, sets.Year, categories.Categoryname 
+													FROM inventory, sets, parts, categories
+													WHERE sets.CatID=categories.CatID 
+													AND parts.PartID=inventory.ItemID 
+													AND inventory.SetID=sets.SetID 
+													AND inventory.Extra='N'
+													AND (Partname LIKE '$found'
+													OR PartID='$found')");	
 		$pagerow = mysqli_num_rows($result);
 
 		$left_rec = $pagerow - ($page * $recordsperpage);
@@ -67,11 +72,18 @@
 		}
 
 	
-		/*Query and Print*/
-		$resultinpages = mysqli_query($connection, "SELECT DISTINCT inventory.SetID, sets.Setname, sets.Year FROM
-						inventory, sets, parts WHERE parts.PartID=inventory.ItemID AND inventory.SetID=sets.SetID 
-						AND inventory.Extra='N' AND (Partname LIKE '$found' OR PartID='$found') 
-						LIMIT $offset, $recordsperpage");
+		/*Query and Print*/		
+		$resultinpages = mysqli_query($connection, "SELECT DISTINCT inventory.SetID, sets.Setname, sets.Year, categories.Categoryname 
+													FROM inventory, sets, parts, categories
+													WHERE sets.CatID=categories.CatID 
+													AND parts.PartID=inventory.ItemID 
+													AND inventory.SetID=sets.SetID 
+													AND inventory.Extra='N'
+													AND (Partname LIKE '$found'
+													OR PartID='$found')
+													LIMIT $offset, $recordsperpage");
+						
+						
 		
 
 		print("<table class='displaytableset'>\n<tr>");
@@ -143,6 +155,7 @@
 		echo "</table>";
 		echo "</div>";
 		
+		/*Page buttons*/
 		echo "<div class='pagefooter'>";
 		
 				

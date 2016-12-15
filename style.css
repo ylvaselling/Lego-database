@@ -44,6 +44,7 @@ body
 
 #about_div
 {
+	background-color:none;
 	text-align:center;
 	margin: auto;
 	width: 1000px;
@@ -90,18 +91,44 @@ body
 
 }
 
-.about_speech
+.about_speech_left
 {
 	display: block;
-	margin: 100px auto 0 auto;
-	background-image: url("about_left.svg");
+	margin: auto;
+	background-image: url("images/about_left.svg");
 	background-repeat: no-repeat;
-	width: 420px;
+	width: 700px;
 	height: 300px;
     background-position: center;
 	font-family: 'Exo 2', sans-serif;	
-	padding: 50px 150px;
 	
+}
+
+.about_speech_right
+{
+	display: block;
+	margin: auto;
+	background-image: url("images/about_right.svg");
+	background-repeat: no-repeat;
+	width: 700px;
+	height: 300px;
+    background-position: center;
+	font-family: 'Exo 2', sans-serif;	
+	
+}
+
+.about_text_left
+{	
+	text-align: center;
+	padding: 20px 110px 20px 140px;
+
+}
+
+.about_text_right
+{	
+	text-align: center;
+	padding: 20px 140px 20px 110px ;
+
 }
 
 table
@@ -268,6 +295,10 @@ input#searchbox_menu.searchbox
 {
 	border-left: 1px solid white;
 }
+.displaytableset td:first-child
+{
+	border-left: 1px solid white;
+}
 
 .displaytable td:last-child
 {
@@ -422,5 +453,8 @@ input#choosebrick
 	cursor: pointer;	
 }
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 25ae547165845910c023bf650ee99c04cdfb37a0
