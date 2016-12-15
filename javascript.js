@@ -11,9 +11,9 @@ function CustomAlert(){
         dialogbox.style.left = (winW/2) - (550 * .5)+"px";
         dialogbox.style.top = "100px";
         dialogbox.style.display = "block";
-        document.getElementById('dialogboxhead').innerHTML = "Acknowledge This Message";
+        document.getElementById('dialogboxhead').innerHTML = "<h1>Ooops!</h1>";
         document.getElementById('dialogboxbody').innerHTML = dialog;
-        document.getElementById('dialogboxfoot').innerHTML = "<button id='alert_button' onclick='Alert.ok()'><h1>OK</h1></button>";
+        document.getElementById('dialogboxfoot').innerHTML = "<button id='alert_button' onclick='Alert.ok()'><h2>OK</h2></button>";
     }
 	this.ok = function(){
 		document.getElementById('dialogbox').style.display = "none";
@@ -26,7 +26,7 @@ function validateForm() {
     var x = document.forms["searchform"]["searchbox"].value;
     if (x == "")
 	{
-        Alert.render('Please search for something!');
+        Alert.render('<h2>Please search for something!</h2>');
         return false;
     }
 }
