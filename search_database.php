@@ -1,7 +1,5 @@
 <?php 	include "menu.txt";
 		
-echo "<div class='middlediv'>"; 
-
 $connection = mysqli_connect("mysql.itn.liu.se","lego","", "lego");
 if (!$connection) 
 			{
@@ -37,6 +35,13 @@ else if(mysqli_num_rows($bricks)==1)
 
 else
 {
+	
+		echo "<div class='header'>
+		<h2>Many Lego pieces matched your search. <br> Choose one to display the sets it appears in!</h2>
+		</div>";
+		
+		echo "<div class='middlediv'>"; 
+	
 		/*Pagenation RÖR EJ, NICHT RÖREN, NO TOUCHIE*/
 		$recordsperpage = 20;
 

@@ -11,7 +11,7 @@
 		<body>
 		<div class="speechbubble">
 		<h1>Welcome!</h1>
-		<p>Search for a Lego piece in the searchbar to find you favorite Lego set!</p>
+		<h2>Search for a Lego piece in the searchbar to find you favorite Lego set!</h2>
 		</div>
 		<div id="startpagetext">
 		<table id="starttable">

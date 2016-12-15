@@ -12,7 +12,7 @@ body
 	width: 1000px;
 	height: 80px;
 	display: block;
-	margin: auto;
+	margin: 0 auto 10px auto;
 	border: 2px solid #81d2fd;
 	position: static;
 	z-index: 1;
@@ -36,7 +36,7 @@ body
 	height: auto;
 	display: block;
 	margin: auto;
-	margin-top: 10px;
+	margin-top: 0px;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 	
@@ -61,11 +61,24 @@ body
 	margin: 100px auto 0 auto;
 	background-image: url("images/speechbubble_right.svg");
 	background-repeat: no-repeat;
-	width: 420px;
-	height: 300px;
+	width: 300px;
+	height: 250px;
     background-position: center;
 	font-family: 'Exo 2', sans-serif;	
-	padding: 50px 150px;
+	padding: 50px 160px 100px 150px;
+
+}
+
+.header
+{	
+	display: block;
+	margin: 7px auto 0 auto;
+	background-image: url("images/header.svg");
+	background-repeat: no-repeat;
+	width: 1000;
+    background-position: center;
+	font-family: 'Exo 2', sans-serif;	
+	padding: 30px 500px 35px 200px;
 
 }
 
@@ -243,6 +256,16 @@ input#searchbox_menu.searchbox
 	
 }
 
+.displaytable td:first-child
+{
+	border-left: 1px solid white;
+}
+
+.displaytable td:last-child
+{
+	border-right: 0px;
+}
+
 .displaytableset
 {	
 	margin: 0 auto;
@@ -299,7 +322,7 @@ input#choosebrick
 	height: 100px;
     width: 1000px;
 	background-color: white;
-	margin: 0 auto;
+	margin: 0 auto 15px auto;
 	border-radius: 0 0 5px 5px;
 	
 }

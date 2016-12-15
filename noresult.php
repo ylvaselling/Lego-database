@@ -10,7 +10,7 @@
 		<body>
 		<div class="speechbubble">
 		<h1>Oh no!</h1>
-		<p>Unfortunately we could not find any matches for your search, try again!</p>
+		<h2>Unfortunately we could not find any matches for your search, try again!</h2>
 		</div>
 		<div id="startpagetext">
 		<table id="starttable">
