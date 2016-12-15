@@ -9,12 +9,17 @@
 	<title>Lego-Search</title>
 	</head>
 		<body>
+		
 		<div class="speechbubble">
+		<div id="speechbubbletext">
 		<h1>Welcome!</h1>
 		<h3>Search for a Lego piece in the searchbar to find you favorite Lego set!</h3>
 		</div>
+		</div>
+
 		<div id="startpagetext">
 		<table id="starttable">
+
 			<tr>
 				<td>
 					<h1 class="headingstart">LEGOSEARCHER</h1>

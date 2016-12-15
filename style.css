@@ -55,19 +55,27 @@ body
 	height: 250px;
 }
 
+#speechbubbletext
+{
+	padding: 30px 30px 30px 30px;
+
+}
+
 .speechbubble
 {	
 	display: block;
 	margin: 100px auto 0 auto;
 	background-image: url("images/speechbubble_right.svg");
 	background-repeat: no-repeat;
-	width: 250px;
-	height: 200px;
+	width: 550px;
+	height: 270px;
     background-position: center;
 	font-family: 'Exo 2', sans-serif;	
-	padding: 50px 160px 100px 150px;
+
 
 }
+
+
 
 .header
 {	
@@ -389,14 +397,18 @@ input#choosebrick
 	color:black;
 	display: none;
 	position: fixed;
-	background: white;
-	border-radius:7px; 
-	width:550px;
+	background-image: url("images/speechbubble_right.svg");
+	background-repeat: no-repeat;
+	width: 550px;
+	height: 270px;
+    background-position: center;
 	z-index: 10;
+	margin: 0 auto;
+	padding: 50;
 }
 #dialogbox > div{ margin:8px; }
-#dialogbox > div > #dialogboxhead{ padding:10px; }
-#dialogbox > div > #dialogboxbody{  padding:20px; }
+#dialogbox > div > #dialogboxhead{ padding-top:15px; }
+#dialogbox > div > #dialogboxbody{  padding:0px; }
 #dialogbox > div > #dialogboxfoot{  padding:10px; text-align:right; }
 
 #alert_button
@@ -410,6 +422,22 @@ input#choosebrick
 	cursor: pointer;	
 }
 
+/*
+
+.speechbubble
+{	
+	display: block;
+	margin: 100px auto 0 auto;
+	background-image: url("images/speechbubble_right.svg");
+	background-repeat: no-repeat;
+	width: 500px;
+	height: 220px;
+    background-position: center;
+	font-family: 'Exo 2', sans-serif;	
+	padding: 50;
+
+}
 
 
+*/
 
