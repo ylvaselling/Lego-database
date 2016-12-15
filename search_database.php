@@ -81,11 +81,7 @@ else
 		{
 			die('Could not get data: ' . mysqli_error());
 		}
-			
-			
-		
-		
-			
+
 			$bricks = mysqli_query($connection, "SELECT DISTINCT inventory.ItemID, inventory.ColorID, colors.Colorname, parts.Partname 
 			FROM inventory, parts, colors WHERE inventory.Extra='N' AND inventory.ItemTypeID='P' 
 			AND inventory.ItemID=parts.PartID AND inventory.ColorID=colors.ColorID 
@@ -143,6 +139,8 @@ else
 		
 		echo "</table>";
 		echo "</div>";
+		
+		/*Page buttons*/
 		echo "<div class='pagefooter'>";
 		
 				
