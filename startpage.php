@@ -9,6 +9,10 @@
 	<title>Lego-Search</title>
 	</head>
 		<body>
+		<div class="speechbubble">
+		<h1>Welcome!</h1>
+		<p>Search for a Lego piece in the searchbar to find you favorite Lego set!</p>
+		</div>
 		<div id="startpagetext">
 		<table id="starttable">
 			<tr>
@@ -16,7 +20,7 @@
 					<h1 class="headingstart">LEGOSEARCHER</h1>
 				</td>
 				<td>
-					<img id="legoman_img" src="images/legoman.png" alt="legoman"/>
+					<img class="legoman_img" src="images/legoman.png" alt="legoman"/>
 				</td>
 			</tr>
 		</table>	

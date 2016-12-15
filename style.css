@@ -42,24 +42,45 @@ body
 	
 }
 
-.divleft
+#about_div
 {
-	height: 300px;
-	width: 500px;
-	padding: 20px;
-	float: left;
-	margin: 50px 0px 0px 50px; 
-	background-color: blue;
+	text-align:center;
+	margin: auto;
+	width: 1000px;
+	font-family: 'Exo 2', sans-serif;
 }
 
-.divright
+.legoman_img
 {
+	height: 250px;
+}
+
+.speechbubble
+{	
+	display: block;
+	margin: 100px auto 0 auto;
+	background-image: url("images/speechbubble_right.svg");
+	background-repeat: no-repeat;
+	width: 420px;
 	height: 300px;
-	width: 500px;
-	padding: 20px;
-	float: right;
-	margin: 440px 50px 0px 0px; 
-	background-color: blue;
+    background-position: center;
+	font-family: 'Exo 2', sans-serif;	
+	padding: 50px 150px;
+
+}
+
+.about_speech
+{
+	display: block;
+	margin: 100px auto 0 auto;
+	background-image: url("images/speechbubble_left.png");
+	background-repeat: no-repeat;
+	width: 420px;
+	height: 300px;
+    background-position: center;
+	font-family: 'Exo 2', sans-serif;	
+	padding: 50px 150px;
+	
 }
 
 table
@@ -82,17 +103,13 @@ th, td, tr
 	margin-top: 440px;
 }
 
-#legoman_img
-{
-	width: 150px;
-}
 #startpagetext
 {
 	width: 700px;
 	display: block;
 	margin: auto;
 	text-align: center;
-	margin-top: 40vh;
+
 }
 
 .searchbox
@@ -108,8 +125,7 @@ th, td, tr
 	border-right:none;
 	border-top-left-radius: 5px;
 	border-bottom-left-radius: 5px;
-	
-	
+
 }
 
 /*Placeholder color*/
@@ -141,8 +157,7 @@ th, td, tr
 	height: 32px;
 	border-top-right-radius: 5px;
 	border-bottom-right-radius: 5px;
-	cursor: pointer;
-	
+	cursor: pointer;	
 }
 
 .headingstart 
@@ -153,8 +168,6 @@ th, td, tr
 	padding-bottom: 2vh;
 	font-size: 70px;
 	color: white;
-
-
 }
 .menyfont
 {
@@ -166,8 +179,7 @@ th, td, tr
 menyfont, a:visited
 
 {
-	text-decoration: none;
-	
+	text-decoration: none;	
 }
 
 menyfont, a:active
@@ -196,7 +208,13 @@ input
 
 input#searchbox_menu.searchbox
 {
-	margin-left: 15px;
+	margin-left: 25px;
+}
+
+.pagebutton
+{
+	margin-top: 20px;
+	width: 100px;
 }
 
 
@@ -244,14 +262,17 @@ input#searchbox_menu.searchbox
 	border: 1px solid #81d2fd;
 	border-radius: 5px;
 }
+
 #searchboxmeny
 {
 	width: 80%;
 }
+
 #searchbuttonmeny
 {
 	height: 34px;
 }
+
 #starttable td
 {	
 	text-align: center;
@@ -263,7 +284,7 @@ input#searchbox_menu.searchbox
 	background-repeat: no-repeat;
 	background-position: center;
 	padding: 0px;
-	width: 150px;
+	width: 100px;
 
 }
 input#choosebrick
@@ -271,10 +292,61 @@ input#choosebrick
 	float: right;
 }
 
-.last_col
+.pagefooter
 {
+	display: block;
+	float: bottom;
+	height: 100px;
+    width: 1000px;
+	background-color: white;
+	margin: 0 auto;
+	border-radius: 0 0 5px 5px;
 	
-
 }
+
+.divleft
+{
+	height: 300px;
+	width: 500px;
+	padding: 20px;
+	float: left;
+	margin: 25px 0px 100px 0px; 
+	background-color: blue;
+	font-family: 'Exo 2', sans-serif;
+	border-radius: 30px;
+}
+
+.divright
+{
+	height: 300px;
+	width: 500px;
+	padding: 20px;
+	float: right;
+	margin: 125px 0px 0px 0px; 
+	background-color: blue;
+	font-family: 'Exo 2', sans-serif;
+	border-radius: 30px;
+}
+
+
+#divylva
+{
+	background-color: #e495f9;
+}
+#divadrian
+{
+	background-color: #91fc8f;
+}
+
+#divdaniel
+{
+	background-color: #f2d576;
+}
+
+#divemil
+{
+	background-color: #fcb0c2;
+}
+
 
 
