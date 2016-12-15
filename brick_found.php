@@ -60,24 +60,19 @@
 		}
 
 	
-			/*Query and Print*/
-			$result = mysqli_query($connection, "SELECT DISTINCT inventory.SetID, sets.Setname, sets.Year FROM
+		/*Query and Print*/
+		$resultinpages = mysqli_query($connection, "SELECT DISTINCT inventory.SetID, sets.Setname, sets.Year FROM
 						inventory, sets, parts WHERE parts.PartID=inventory.ItemID AND inventory.SetID=sets.SetID 
 						AND inventory.Extra='N' AND (Partname LIKE '$found' OR PartID='$found') 
 						LIMIT $offset, $recordsperpage");
 		
 		
-		print("<table class='displaytable'>\n<tr>");
 
-	$result = mysqli_query($connection, "SELECT DISTINCT inventory.SetID, sets.Setname, sets.Year FROM
-										inventory, sets, parts
-										WHERE parts.PartID=inventory.ItemID AND inventory.SetID=sets.SetID 
-										AND inventory.Extra='N'
-										AND (Partname LIKE '$found'
-										OR PartID='$found')");
+	
+		
 		print("<table class='displaytableset'>\n<tr>");
 
-		while($fieldinfo = mysqli_fetch_field($result))
+		while($fieldinfo = mysqli_fetch_field($resultinpages))
 		{
 			print("<th>". $fieldinfo->name . "</th>");
 		}
@@ -86,10 +81,10 @@
 		
 		print("</tr>\n");
 		
-		while($row = mysqli_fetch_array($result))
+		while($row = mysqli_fetch_array($resultinpages))
 		{
 			print("<tr>");
-			for($i=0; $i<mysqli_num_fields($result); $i++)
+			for($i=0; $i<mysqli_num_fields($resultinpages); $i++)
 			{
 				print("<td>$row[$i]</td>");	
 			}
@@ -140,8 +135,10 @@
 			   print("</tr>\n");
 
 		}
+				
 		echo "</table>";
 		echo "</div>";
+		
 		echo "<div class='pagefooter'>";
 		
 				
@@ -153,22 +150,22 @@
 			else if($page > 0 && $page < ($maxpage-1))
 			{
 				$last = $page - 2;
-				echo "<a href = \"$_PHP_SELF?searchbox=$keyword&page=$last\">
+				echo "<a href = \"$_PHP_SELF?foundpart=$found&page=$last\">
 				<img class='pagebutton' src='images/prev.png' alt='previous'></a>";
-				echo "<a href = \"$_PHP_SELF?searchbox=$keyword&page=$page\">
+				echo "<a href = \"$_PHP_SELF?foundpart=$found&page=$page\">
 				<img  class='pagebutton' src='images/next.png' alt='next'>
 				</a>";
 			}
 			else if ($page == 0)
 			{
 				echo "<img class='pagebutton' src='images/prev.png' alt='previous'>";
-				echo "<a href = \"$_PHPSELF?searchbox=$keyword&page=$page\">
+				echo "<a href = \"$_PHPSELF?foundpart=$found&page=$page\">
 				<img  class='pagebutton' src='images/next.png' alt='next'></a>";
 			}
 			else if ($page == ($maxpage-1))
 			{
 				$last = $page - 2;
-				echo "<a href = \"$_PHPSELF?searchbox=$keyword&page=$last\">
+				echo "<a href = \"$_PHPSELF?foundpart=$found&page=$last\">
 				<img class='pagebutton' src='images/prev.png' alt='previous'></a>";
 				echo "<img  class='pagebutton' src='images/next.png' alt='next'>";
 			}
