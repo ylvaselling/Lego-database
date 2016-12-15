@@ -66,10 +66,7 @@
 						AND inventory.Extra='N' AND (Partname LIKE '$found' OR PartID='$found') 
 						LIMIT $offset, $recordsperpage");
 		
-		
 
-	
-		
 		print("<table class='displaytableset'>\n<tr>");
 
 		while($fieldinfo = mysqli_fetch_field($resultinpages))
@@ -144,21 +141,25 @@
 				
 			if ($page == 0 && $page == ($maxpage-1))
 			{
-				echo "<img class='pagebutton' src='images/prev.png' alt='previous'>";
-				echo "<img  class='pagebutton' src='images/next.png' alt='next'>";
+				echo "<img class='pagebutton' src='images/empty.png' alt='previous'>";
+				
+				echo "<img  class='pagebutton' src='images/empty.png' alt='next'>";
 			}
 			else if($page > 0 && $page < ($maxpage-1))
 			{
 				$last = $page - 2;
+				
 				echo "<a href = \"$_PHP_SELF?foundpart=$found&page=$last\">
 				<img class='pagebutton' src='images/prev.png' alt='previous'></a>";
+				
 				echo "<a href = \"$_PHP_SELF?foundpart=$found&page=$page\">
 				<img  class='pagebutton' src='images/next.png' alt='next'>
 				</a>";
 			}
 			else if ($page == 0)
 			{
-				echo "<img class='pagebutton' src='images/prev.png' alt='previous'>";
+				echo "<img class='pagebutton' src='images/empty.png' alt='previous'>";
+				
 				echo "<a href = \"$_PHPSELF?foundpart=$found&page=$page\">
 				<img  class='pagebutton' src='images/next.png' alt='next'></a>";
 			}
@@ -167,7 +168,8 @@
 				$last = $page - 2;
 				echo "<a href = \"$_PHPSELF?foundpart=$found&page=$last\">
 				<img class='pagebutton' src='images/prev.png' alt='previous'></a>";
-				echo "<img  class='pagebutton' src='images/next.png' alt='next'>";
+				
+				echo "<img  class='pagebutton' src='images/empty.png' alt='next'>";
 			}
 		echo "</div>";
 
